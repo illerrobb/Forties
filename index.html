@@ -267,7 +267,22 @@
             text-align: center;
             margin-top: 1rem;
             border-radius: 10px;
-            animation: shine 2s infinite;
+            position: relative;
+            overflow: hidden;
+        }
+        .world-record::after {
+            content: "";
+            position: absolute;
+            top: 0; left: -75%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0) 100%);
+            animation: shine 2.2s cubic-bezier(.4,.7,.7,1) infinite;
+            pointer-events: none;
+        }
+        @keyframes shine {
+            0% { left: -75%; }
+            100% { left: 125%; }
         }
         
         .quote {
@@ -737,21 +752,21 @@
                     <div class="card-title">Pianificatrice di Viaggi</div>
                 </div>
                 <div class="card-content">
-                    <p>Strategia di esplorazione globale ad alta intensità.</p>
-                    <div class="badge">Paesi visitati: 20+</div>
+                    <p>Strategia di esplorazione globale ad alta intensità e lunga durata.</p>
+                    <div class="badge">16 viaggi in 4 anni</div>
                     <div class="chart-container">
                         <canvas id="travelChart"></canvas>
                     </div>
                     <ul>
-                        <li>Ottimizzazione spesa al millesimo</li>
-                        <li>Pacchetti "tutto incluso" che includono TUTTO</li>
-                        <li>Itinerari che sfidano le leggi della fisica</li>
-                        <li>Memorie create: infinite</li>
+                        <li>Viaggio di nozze: 26 giorni in Cina</li>
+                        <li>Trentino getaway: 18 giorni di relax</li>
+                        <li>Record avventura: 8 giorni in Scozia e Giordania</li>
+                        <li>Efficienza organizzativa: già pianificato fino al 2025</li>
                     </ul>
-                    
+
                     <div class="anecdote">
-                        <div class="anecdote-title"><i class="fas fa-globe-asia"></i> Viaggio di Nozze in Cina</div>
-                        <p>26 giorni, 12 città, 8 voli interni, 4 fusi orari, 1 valigia (sì, una sola). Federica ha dimostrato che è possibile vedere "tutta la Cina" in meno di un mese, anche se il concetto di "riposo" è stato temporaneamente rimosso dal vocabolario.</p>
+                        <div class="anecdote-title"><i class="fas fa-globe-asia"></i> Strategia a lungo termine</div>
+                        <p>Mentre altri pianificano weekend, Federica pianifica mesi interi. Con una media di 4 viaggi all'anno e permanenze che vanno da 1 giorno (Milano express) a 26 giorni (viaggio di nozze in Cina), dimostra che il tempo è solo un concetto relativo quando si tratta di esplorare il mondo.</p>
                     </div>
                 </div>
             </div>
@@ -1055,322 +1070,370 @@
     </footer>
     
     <script>
-        // Initialize charts after page load
         document.addEventListener('DOMContentLoaded', function() {
-            // Gnome Chart
-            const gnomeCtx = document.getElementById('gnomeChart').getContext('2d');
-            new Chart(gnomeCtx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Gnomizzazione', 'Normale'],
-                    datasets: [{
-                        data: [100, 0],
-                        backgroundColor: ['#ff6b8b', '#e0e0e0'],
-                        borderWidth: 0
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    cutout: '70%',
-                    plugins: {
-                        legend: { 
-                            display: true,
-                            position: 'bottom',
-                            labels: {
-                                padding: 15,
-                                usePointStyle: true
-                            }
-                        },
-                        tooltip: { enabled: true }
+            // Configurazione per l'animazione dei grafici quando entrano nel viewport
+            const chartObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const chartId = entry.target.querySelector('canvas').id;
+                        initializeChart(chartId);
+                        chartObserver.unobserve(entry.target);
                     }
-                }
-            });
-            
-            // Cups Chart
-            const cupsCtx = document.getElementById('cupsChart').getContext('2d');
-            new Chart(cupsCtx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Sopravvissute', 'Vittime'],
-                    datasets: [{
-                        data: [4, 10],
-                        backgroundColor: ['#42b883', '#ff6b8b'],
-                        borderWidth: 0
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    cutout: '70%',
-                    plugins: {
-                        legend: { 
-                            display: true,
-                            position: 'bottom',
-                            labels: {
-                                padding: 15,
-                                usePointStyle: true
-                            }
-                        }
-                    }
-                }
-            });
-            
-            // Travel Chart
-            const travelCtx = document.getElementById('travelChart').getContext('2d');
-            new Chart(travelCtx, {
-                type: 'bar',
-                data: {
-                    labels: ['Italia', 'Francia', 'Spagna', 'UK', 'USA', 'Giappone', 'Cina', 'Islanda', 'Norvegia', 'Grecia', 'Portogallo'],
-                    datasets: [{
-                        label: 'Paesi visitati',
-                        data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-                        backgroundColor: [
-                            '#ff6b8b', '#42b883', '#ffd93b', '#b084ff', '#7c5cff', '#34aaff',
-                            '#ffa559', '#2d2b55', '#4cd964', '#ff9a9e', '#fad0c4'
-                        ]
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { 
-                            display: true,
-                            position: 'top'
-                        }
-                    },
-                    scales: {
-                        y: { 
-                            beginAtZero: true, 
-                            stepSize: 1,
-                            title: {
-                                display: true,
-                                text: 'Visite'
-                            }
-                        },
-                        x: {
-                            title: {
-                                display: true,
-                                text: 'Paesi'
-                            }
-                        }
-                    }
-                }
+                });
+            }, {
+                threshold: 0.3 // Il grafico si anima quando è visibile al 30%
             });
 
-            // Organizzazione Chart
-            const orgCtx = document.getElementById('orgChart').getContext('2d');
-            new Chart(orgCtx, {
-                type: 'line',
-                data: {
-                    labels: ['2024', '2026', '2028', '2030', '2032', '2042'],
-                    datasets: [{
-                        label: 'Weekend prenotati',
-                        data: [12, 28, 56, 85, 120, 900],
-                        backgroundColor: 'rgba(124,92,255,0.08)',
-                        borderColor: '#7c5cff',
-                        fill: true,
-                        tension: 0.3
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { 
-                            display: true,
-                            position: 'top'
-                        }
-                    },
-                    scales: {
-                        y: { 
-                            beginAtZero: true,
-                            title: {
-                                display: true,
-                                text: 'Numero weekend'
-                            }
-                        },
-                        x: {
-                            title: {
-                                display: true,
-                                text: 'Anno'
-                            }
-                        }
-                    }
-                },
+            // Osserva tutti i container dei grafici
+            document.querySelectorAll('.chart-container').forEach(container => {
+                chartObserver.observe(container);
             });
 
-            // Animal Chart
-            const animalCtx = document.getElementById('animalChart').getContext('2d');
-            new Chart(animalCtx, {
-                type: 'pie',
-                data: {
-                    labels: ['Topi', 'Gatti', 'Cani', 'Panda', 'Procioni'],
-                    datasets: [{
-                        data: [25, 20, 30, 10, 15],
-                        backgroundColor: ['#ffd93b', '#b084ff', '#42b883', '#ff6b8b', '#7c5cff']
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { 
-                            display: true,
-                            position: 'bottom',
-                            labels: {
-                                padding: 15,
-                                usePointStyle: true
-                            }
-                        }
-                    }
-                }
-            });
+            // Funzione per inizializzare i singoli grafici
+            function initializeChart(chartId) {
+                const ctx = document.getElementById(chartId).getContext('2d');
+                
+                // Configurazione base per l'animazione
+                const animationConfig = {
+                    duration: 1500,
+                    easing: 'easeOutQuart'
+                };
 
-            // Fitness Chart
-            const fitnessCtx = document.getElementById('fitnessChart').getContext('2d');
-            new Chart(fitnessCtx, {
-                type: 'bar',
-                data: {
-                    labels: ['Anelli chiusi', 'Medaglie Apple Watch', 'Hip Thrust', 'Workout al mese'],
-                    datasets: [{
-                        label: 'Performance',
-                        data: [350, 21, 4, 28],
-                        backgroundColor: ['#4cd964', '#ff6b8b', '#7c5cff', '#42b883']
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { 
-                            display: true,
-                            position: 'top'
-                        }
-                    },
-                    scales: { 
-                        y: { 
-                            beginAtZero: true,
-                            title: {
-                                display: true,
-                                text: 'Valori'
+                switch(chartId) {
+                    case 'gnomeChart':
+                        new Chart(ctx, {
+                            type: 'doughnut',
+                            data: {
+                                labels: ['Gnomizzazione', 'Normale'],
+                                datasets: [{
+                                    data: [100, 0],
+                                    backgroundColor: ['#ff6b8b', '#e0e0e0'],
+                                    borderWidth: 0
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                cutout: '70%',
+                                animation: animationConfig,
+                                plugins: {
+                                    legend: { 
+                                        display: true,
+                                        position: 'bottom',
+                                        labels: {
+                                            padding: 15,
+                                            usePointStyle: true
+                                        }
+                                    },
+                                    tooltip: { enabled: true }
+                                }
                             }
-                        },
-                        x: {
-                            title: {
-                                display: true,
-                                text: 'Categorie'
-                            }
-                        }
-                    }
-                }
-            });
+                        });
+                        break;
 
-            // Sweetness Chart
-            const sweetCtx = document.getElementById('sweetChart').getContext('2d');
-            new Chart(sweetCtx, {
-                type: 'radar',
-                data: {
-                    labels: ['Supporto', 'Coccole', 'Motivazione', 'Pazienza', 'Empatia', 'Affidabilità'],
-                    datasets: [{
-                        label: 'Livello dolcezza',
-                        data: [99, 100, 97, 95, 100, 98],
-                        backgroundColor: 'rgba(255,107,139,0.19)',
-                        borderColor: '#ff6b8b'
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { 
-                            display: true,
-                            position: 'top'
-                        }
-                    },
-                    scales: {
-                        r: { 
-                            beginAtZero: true, 
-                            max: 100,
-                            title: {
-                                display: true,
-                                text: 'Percentuale'
+                    case 'cupsChart':
+                        new Chart(ctx, {
+                            type: 'doughnut',
+                            data: {
+                                labels: ['Sopravvissute', 'Vittime'],
+                                datasets: [{
+                                    data: [4, 10],
+                                    backgroundColor: ['#42b883', '#ff6b8b'],
+                                    borderWidth: 0
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                cutout: '70%',
+                                animation: animationConfig,
+                                plugins: {
+                                    legend: { 
+                                        display: true,
+                                        position: 'bottom',
+                                        labels: {
+                                            padding: 15,
+                                            usePointStyle: true
+                                        }
+                                    }
+                                }
                             }
-                        }
-                    }
-                }
-            });
+                        });
+                        break;
 
-            // Age Chart
-            const ageCtx = document.getElementById('ageChart').getContext('2d');
-            new Chart(ageCtx, {
-                type: 'line',
-                data: {
-                    labels: ['2014', '2018', '2022', '2025'],
-                    datasets: [{
-                        label: 'Apparenza anagrafica',
-                        data: [25, 21, 19, 18],
-                        backgroundColor: 'rgba(255,217,59,0.12)',
-                        borderColor: '#ffd93b',
-                        tension: 0.3
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { 
-                            display: true,
-                            position: 'top'
-                        }
-                    },
-                    scales: {
-                        y: {
-                            min: 16,
-                            max: 26,
-                            reverse: true,
-                            title: {
-                                display: true,
-                                text: 'Età apparente'
+                    case 'travelChart':
+                        new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: [
+                                    'Grecia 2021', 'Francia 2021', 'Francia 2022', 'Trentino 2022', 
+                                    'Portogallo 2022', 'Scozia 2023', 'Briganti 2023', 'Oulx 2023', 
+                                    'Giordania 2023', 'Norvegia 2024', 'Inghilterra 2024', 'Tenerife 2024', 
+                                    'Oman 2025', 'Milano 2025', 'Slovenia 2025', 'Cina 2025'
+                                ],
+                                datasets: [{
+                                    label: 'Durata viaggi (giorni)',
+                                    data: [4, 2, 4, 18, 2, 8, 7, 6, 8, 10, 6, 4, 7, 1, 7, 26],
+                                    backgroundColor: [
+                                        '#ff6b8b', '#42b883', '#42b883', '#ffd93b', '#b084ff', 
+                                        '#7c5cff', '#34aaff', '#ffa559', '#2d2b55', '#4cd964', 
+                                        '#ff9a9e', '#fad0c4', '#ffb347', '#87ceeb', '#98fb98', '#ff6347'
+                                    ]
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                animation: animationConfig,
+                                plugins: {
+                                    legend: { 
+                                        display: true,
+                                        position: 'top'
+                                    }
+                                },
+                                scales: {
+                                    y: { 
+                                        beginAtZero: true,
+                                        title: {
+                                            display: true,
+                                            text: 'Giorni'
+                                        }
+                                    },
+                                    x: {
+                                        title: {
+                                            display: true,
+                                            text: 'Viaggi per anno'
+                                        },
+                                        ticks: {
+                                            maxRotation: 45,
+                                            minRotation: 45
+                                        }
+                                    }
+                                }
                             }
-                        },
-                        x: {
-                            title: {
-                                display: true,
-                                text: 'Anno'
-                            }
-                        }
-                    }
-                }
-            });
+                        });
+                        break;
 
-            // System Chart (antisistema)
-            const systemCtx = document.getElementById('systemChart').getContext('2d');
-            new Chart(systemCtx, {
-                type: 'pie',
-                data: {
-                    labels: ['Regole Seguite', 'Regole Infrante'],
-                    datasets: [{
-                        data: [2, 98],
-                        backgroundColor: ['#4cd964', '#ff6b8b']
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { 
-                            display: true,
-                            position: 'bottom',
-                            labels: {
-                                padding: 15,
-                                usePointStyle: true
+                    case 'orgChart':
+                        new Chart(ctx, {
+                            type: 'line',
+                            data: {
+                                labels: ['2024', '2026', '2028', '2030', '2032', '2042'],
+                                datasets: [{
+                                    label: 'Weekend prenotati',
+                                    data: [12, 28, 56, 85, 120, 900],
+                                    backgroundColor: 'rgba(124,92,255,0.08)',
+                                    borderColor: '#7c5cff',
+                                    fill: true,
+                                    tension: 0.3
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                animation: animationConfig,
+                                plugins: {
+                                    legend: { 
+                                        display: true,
+                                        position: 'top'
+                                    }
+                                },
+                                scales: {
+                                    y: { 
+                                        beginAtZero: true,
+                                        title: {
+                                            display: true,
+                                            text: 'Numero weekend'
+                                        }
+                                    },
+                                    x: {
+                                        title: {
+                                            display: true,
+                                            text: 'Anno'
+                                        }
+                                    }
+                                }
                             }
-                        }
-                    }
+                        });
+                        break;
+
+                    case 'animalChart':
+                        new Chart(ctx, {
+                            type: 'pie',
+                            data: {
+                                labels: ['Topi', 'Gatti', 'Cani', 'Panda', 'Procioni'],
+                                datasets: [{
+                                    data: [25, 20, 30, 10, 15],
+                                    backgroundColor: ['#ffd93b', '#b084ff', '#42b883', '#ff6b8b', '#7c5cff']
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                animation: animationConfig,
+                                plugins: {
+                                    legend: { 
+                                        display: true,
+                                        position: 'bottom',
+                                        labels: {
+                                            padding: 15,
+                                            usePointStyle: true
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                        break;
+
+                    case 'fitnessChart':
+                        new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: ['Anelli chiusi', 'Medaglie Apple Watch', 'Hip Thrust', 'Workout al mese'],
+                                datasets: [{
+                                    label: 'Performance',
+                                    data: [350, 21, 4, 28],
+                                    backgroundColor: ['#4cd964', '#ff6b8b', '#7c5cff', '#42b883']
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                animation: animationConfig,
+                                plugins: {
+                                    legend: { 
+                                        display: true,
+                                        position: 'top'
+                                    }
+                                },
+                                scales: { 
+                                    y: { 
+                                        beginAtZero: true,
+                                        title: {
+                                            display: true,
+                                            text: 'Valori'
+                                        }
+                                    },
+                                    x: {
+                                        title: {
+                                            display: true,
+                                            text: 'Categorie'
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                        break;
+
+                    case 'sweetChart':
+                        new Chart(ctx, {
+                            type: 'radar',
+                            data: {
+                                labels: ['Supporto', 'Coccole', 'Motivazione', 'Pazienza', 'Empatia', 'Affidabilità'],
+                                datasets: [{
+                                    label: 'Livello dolcezza',
+                                    data: [99, 100, 97, 95, 100, 98],
+                                    backgroundColor: 'rgba(255,107,139,0.19)',
+                                    borderColor: '#ff6b8b'
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                animation: animationConfig,
+                                plugins: {
+                                    legend: { 
+                                        display: true,
+                                        position: 'top'
+                                    }
+                                },
+                                scales: {
+                                    r: { 
+                                        beginAtZero: true, 
+                                        max: 100,
+                                        title: {
+                                            display: true,
+                                            text: 'Percentuale'
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                        break;
+
+                    case 'ageChart':
+                        new Chart(ctx, {
+                            type: 'line',
+                            data: {
+                                labels: ['2014', '2018', '2022', '2025'],
+                                datasets: [{
+                                    label: 'Apparenza anagrafica',
+                                    data: [25, 21, 19, 18],
+                                    backgroundColor: 'rgba(255,217,59,0.12)',
+                                    borderColor: '#ffd93b',
+                                    tension: 0.3
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                animation: animationConfig,
+                                plugins: {
+                                    legend: { 
+                                        display: true,
+                                        position: 'top'
+                                    }
+                                },
+                                scales: {
+                                    y: {
+                                        min: 16,
+                                        max: 26,
+                                        reverse: true,
+                                        title: {
+                                            display: true,
+                                            text: 'Età apparente'
+                                        }
+                                    },
+                                    x: {
+                                        title: {
+                                            display: true,
+                                            text: 'Anno'
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                        break;
+
+                    case 'systemChart':
+                        new Chart(ctx, {
+                            type: 'pie',
+                            data: {
+                                labels: ['Regole Seguite', 'Regole Infrante'],
+                                datasets: [{
+                                    data: [2, 98],
+                                    backgroundColor: ['#4cd964', '#ff6b8b']
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                animation: animationConfig,
+                                plugins: {
+                                    legend: { 
+                                        display: true,
+                                        position: 'bottom',
+                                        labels: {
+                                            padding: 15,
+                                            usePointStyle: true
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                        break;
                 }
-            });
+            }
         });
     </script>
 </body>
