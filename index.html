@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORTIES - 40 anni di straordinarietà</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #ff6b8b;
+            --secondary: #7c5cff;
+            --accent: #42b883;
+            --light: #fff5f7;
+            --dark: #2d2b55;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        header {
+            background: var(--gradient);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 10rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            #animation: float 3s ease-in-out infinite;
+            letter-spacing: 1px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+        
+        .intro-box {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            text-align: left;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .intro-box p {
+            margin-bottom: 1rem;
+        }
+        
+        .hero-img {
+            width: 180px;
+            height: 180px;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            border-radius: 50%;
+            margin: 1.5rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            animation: pulse 2s infinite;
+        }
+        
+        .hero-img i {
+            font-size: 5rem;
+            color: white;
+        }
+        
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .stat-card {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1.2rem;
+            min-width: 150px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin: 2.5rem 0;
+            color: var(--dark);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            margin: 0.5rem auto;
+            border-radius: 10px;
+        }
+        
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .review-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        
+        .review-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .card-header {
+            padding: 1.5rem;
+            background: var(--gradient);
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-icon {
+            font-size: 2.5rem;
+            margin-right: 1rem;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .card-content {
+            padding: 1.8rem;
+        }
+        
+        .card-content ul {
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .card-content li {
+            margin-bottom: 0.8rem;
+            position: relative;
+        }
+        
+        .card-content li:before {
+            content: "•";
+            color: var(--primary);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        .chart-container {
+            height: 250px;
+            margin: 1rem 0;
+            position: relative;
+            width: 100%;
+            padding: 10px;
+        }
+        
+        /* Miglioramenti per schermi piccoli */
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 200px;
+                padding: 5px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .chart-container {
+                height: 180px;
+                padding: 0;
+            }
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin: 0.5rem 0;
+            font-weight: 600;
+        }
+        
+        .world-record {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: var(--dark);
+            font-weight: 700;
+            padding: 0.5rem 1rem;
+            text-align: center;
+            margin-top: 1rem;
+            border-radius: 10px;
+            animation: shine 2s infinite;
+        }
+        
+        .quote {
+            font-style: italic;
+            padding: 1.5rem;
+            background: rgba(123, 198, 204, 0.1);
+            border-radius: 15px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--accent);
+            position: relative;
+        }
+        
+        .quote:before {
+            content: """;
+            font-size: 4rem;
+            position: absolute;
+            top: -20px;
+            left: 10px;
+            color: var(--accent);
+            opacity: 0.2;
+            font-family: serif;
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .skill {
+            background: rgba(123, 198, 204, 0.15);
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .skill i {
+            margin-right: 0.5rem;
+            color: var(--accent);
+        }
+        
+        .anecdote {
+            background: rgba(255, 107, 139, 0.1);
+            padding: 1.2rem;
+            border-radius: 15px;
+            margin: 1rem 0;
+            border-left: 3px solid var(--primary);
+        }
+        
+        .anecdote-title {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .anecdote-title i {
+            margin-right: 0.5rem;
+        }
+        
+        .gnome-alert {
+            display: flex;
+            align-items: center;
+            background: #ffecf1;
+            padding: 0.8rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+        }
+        
+        .gnome-icon {
+            font-size: 2rem;
+            margin-right: 1rem;
+            color: #7c5cff;
+        }
+        
+        .gnome-text {
+            flex: 1;
+        }
+        
+        .gnome-level {
+            font-weight: 700;
+            color: #ff3860;
+            animation: blink 1.5s infinite;
+        }
+        
+        .polpetta-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .polpetta-img {
+            width: 100px;
+            height: 100px;
+            background: #fff;
+            border-radius: 50%;
+            margin-right: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #ff6b8b;
+            border: 3px solid #ff6b8b;
+        }
+        
+        .polpetta-stats {
+            flex: 1;
+        }
+        
+        .polpetta-stats h3 {
+            color: #2d2b55;
+            margin-bottom: 0.5rem;
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .conclusion {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .heart {
+            color: var(--primary);
+            animation: heartbeat 1.2s infinite;
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,255,255,0.4); }
+            70% { transform: scale(1.02); box-shadow: 0 0 0 15px rgba(255,255,255,0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+        }
+        
+        @keyframes shine {
+            0% { background-position: -100px; }
+            100% { background-position: 200px; }
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        /* Aggiungi questo alla fine del tuo CSS, prima delle media queries esistenti */
+
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 20em;
+                line-height: 1.2;
+            }
+        
+            .header-content {
+                padding: 1rem;
+            }
+        
+            .hero-img {
+                width: 120px;
+                height: 120px;
+            }
+        
+            .hero-img i {
+                font-size: 3rem;
+            }
+        
+            .intro-box {
+                padding: 1rem;
+                margin: 1rem 0;
+            }
+        
+            .review-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        
+            .review-card {
+                width: 100%;
+                margin-bottom: 1.5rem;
+            }
+        
+            .section-title {
+                font-size: 1.8rem;
+                margin: 1.5rem 0;
+            }
+        
+            .stats-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        
+            .stat-card {
+                width: 100%;
+                max-width: 100%;
+                margin-bottom: 1rem;
+            }
+        
+            .card-content {
+                padding: 1.2rem;
+            }
+        
+            .chart-container {
+                height: 200px;
+            }
+        
+            .gnome-alert {
+                flex-direction: column;
+                text-align: center;
+            }
+        
+            .gnome-icon {
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+            }
+        
+            .polpetta-card {
+                flex-direction: column;
+                text-align: center;
+            }
+        
+            .polpetta-img {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+        
+            .container {
+                padding: 1rem;
+            }
+        }
+        
+        /* Per schermi molto piccoli */
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 8rem;
+            }
+        
+            .card-header {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem;
+            }
+        
+            .card-icon {
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+            }
+        
+            .card-title {
+                font-size: 1.3rem;
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-title { font-size: 5rem; }
+            .stats-container { flex-direction: column; align-items: center; }
+            .stat-card { width: 100%; max-width: 300px; }
+            .polpetta-card { flex-direction: column; text-align: center; }
+            .polpetta-img { margin-right: 0; margin-bottom: 1rem; }
+        }
+        
+        .polpetta-gallery {
+            display: flex;
+            overflow-x: auto;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            padding-bottom: 0.5rem;
+            scroll-snap-type: x mandatory;
+        }
+        
+        .gallery-item {
+            min-width: 160px;
+            flex: 0 0 auto;
+            scroll-snap-align: start;
+            text-align: center;
+            background: rgba(255,255,255,0.8);
+            border-radius: 15px;
+            padding: 1rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .polpetta-gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
+            }
+            
+            .gallery-item {
+                padding: 0.8rem;
+            }
+            
+            .gallery-item img {
+                height: 100px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .polpetta-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="main-title">FORTIES</div>
+            <div class="subtitle">40 anni di straordinarietà con Federica Barone</div>
+            
+            <div class="hero-img">
+                <i class="fas fa-crown"></i>
+            </div>
+            
+            <div class="intro-box">
+                <p><strong>Business Review Annuale - Edizione Limitata</strong></p>
+                <p>Care azionisti dell'amore, ecco la nostra analisi approfondita di Federica Corp., un'entità unica che continua a sovraperformare in tutti i mercati della vita.</p>
+                <p>Quest'anno celebriamo 40 anni di straordinarietà con dati impressionanti: crescita esponenziale in dolcezza, performance record in organizzazione, e qualche incidente di percorso che ha solo aumentato il valore del brand.</p>
+                <p>Attenzione: questa review contiene alti livelli di zucchero e potrebbe causare dipendenza emotiva.</p>
+            </div>
+            
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-value">100%</div>
+                    <div class="stat-label">Gnomizzazione</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">26</div>
+                    <div class="stat-label">Giorni in Cina</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">45%</div>
+                    <div class="stat-label">Tazze sopravvissute</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">∞</div>
+                    <div class="stat-label">Dolcezza Polpetta</div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <h2 class="section-title">Analisi dei Dipartimenti</h2>
+        
+        <div class="review-grid">
+            <!-- Gnomizzazione -->
+            <div class="review-card">
+                <div class="card-header">
+                    <div class="card-icon">🧙‍♀️</div>
+                    <div class="card-title">Gnomizzazione</div>
+                </div>
+                <div class="card-content">
+                    <p>Processo di trasformazione unico con livelli di intensità variabili.</p>
+                    <div class="badge">Efficacia: 100%</div>
+                    <div class="chart-container">
+                        <canvas id="gnomeChart"></canvas>
+                    </div>
+                    <ul>
+                        <li>Attivazione con modifiche minime ai piani</li>
+                        <li>Postura caratteristica a piedi larghi</li>
+                        <li>Vibrazioni ad alta frequenza</li>
+                        <li>Effetto sorprendente su osservatori</li>
+                    </ul>
+                    
+                    <div class="gnome-alert">
+                        <div class="gnome-icon">🧝‍♀️</div>
+                        <div class="gnome-text">
+                            <strong>Allerta Gnomizzazione</strong>
+                            <div>Livello attuale: <span class="gnome-level">Livello 3 - Pericolo Imminente</span></div>
+                            <small>Ultimo evento: Modifica programma pre-matrimonio</small>
+                        </div>
+                    </div>
+                    
+                    <div class="anecdote">
+                        <div class="anecdote-title"><i class="fas fa-exclamation-circle"></i> Incidente critico</div>
+                        <p>"Non era previsto!" - Grido di battaglia durante l'incidente di gnomizzazione pre-matrimonio, quando un semplice cambio di programma (incontro con i genitori) ha scatenato una reazione a catena di livello 3.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tazze Fallimento -->
+            <div class="review-card">
+                <div class="card-header">
+                    <div class="card-icon">☕</div>
+                    <div class="card-title">Operazione Tazze</div>
+                </div>
+                <div class="card-content">
+                    <p>Progetto speciale con tasso di fallimento record.</p>
+                    <div class="badge">Successo: 45%</div>
+                    <div class="chart-container">
+                        <canvas id="cupsChart"></canvas>
+                    </div>
+                    <ul>
+                        <li>14 tazze dipinte a mano con amore</li>
+                        <li>10 vittime durante il trasporto</li>
+                        <li>4 superstiti diventati cimeli</li>
+                        <li>Danno emotivo: incalcolabile</li>
+                    </ul>
+                    
+                    <div class="anecdote">
+                        <div class="anecdote-title"><i class="fas fa-heart-broken"></i> Tragedia annunciata</div>
+                        <p>Le bomboniere del matrimonio dovevano essere perfette. Ore di lavoro, tazze dipinte con cura... solo per scoprire che il servizio postale ha un approccio "creative packaging" che non condividiamo. Il suono delle tazze che si rompevano aprendo i pacchi resterà nei nostri incubi.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TIP1 -->
+            <div class="review-card">
+
+                <div class="card-content" style="text-align:center;">
+                    <img src="src/Cane - Polpetta (1).png" alt="Polpetta 1" style="max-width:220px; width:100%; border-radius:18px; margin-bottom:1rem;">
+                    <div class="quote">"Lo sguardo che conquista tutti."</div>
+                </div>
+            </div>
+
+            <!-- Pianificazione Viaggi -->
+            <div class="review-card">
+                <div class="card-header">
+                    <div class="card-icon">✈️</div>
+                    <div class="card-title">Pianificatrice di Viaggi</div>
+                </div>
+                <div class="card-content">
+                    <p>Strategia di esplorazione globale ad alta intensità.</p>
+                    <div class="badge">Paesi visitati: 20+</div>
+                    <div class="chart-container">
+                        <canvas id="travelChart"></canvas>
+                    </div>
+                    <ul>
+                        <li>Ottimizzazione spesa al millesimo</li>
+                        <li>Pacchetti "tutto incluso" che includono TUTTO</li>
+                        <li>Itinerari che sfidano le leggi della fisica</li>
+                        <li>Memorie create: infinite</li>
+                    </ul>
+                    
+                    <div class="anecdote">
+                        <div class="anecdote-title"><i class="fas fa-globe-asia"></i> Viaggio di Nozze in Cina</div>
+                        <p>26 giorni, 12 città, 8 voli interni, 4 fusi orari, 1 valigia (sì, una sola). Federica ha dimostrato che è possibile vedere "tutta la Cina" in meno di un mese, anche se il concetto di "riposo" è stato temporaneamente rimosso dal vocabolario.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Organizzazione -->
+            <div class="review-card">
+                <div class="card-header">
+                    <div class="card-icon">📅</div>
+                    <div class="card-title">Organizzazione</div>
+                </div>
+                <div class="card-content">
+                    <p>Sistema di gestione temporale di precisione militare.</p>
+                    <div class="badge">Pianificato fino al: 2042</div>
+                    <div class="chart-container">
+                        <canvas id="orgChart"></canvas>
+                    </div>
+                    <ul>
+                        <li>Agenda sincronizzata al secondo</li>
+                        <li>Weekend prenotati fino alla pensione</li>
+                        <li>Allocazione risorse ottimale</li>
+                        <li>Margine di flessibilità: 0.0001%</li>
+                    </ul>
+                    
+                    <div class="world-record">
+                        ⏱️ Record Mondiale: 6 mesi di weekend pianificati in 30 minuti ⏱️
+                    </div>
+                    
+                    <div class="anecdote">
+                        <div class="anecdote-title"><i class="fas fa-calendar-check"></i> Strategia a lungo termine</div>
+                        <p>Mentre la gente normale decide cosa fare il sabato sera il venerdì pomeriggio, Federica ha già stabilito come verranno utilizzati tutti i weekend fino al 2042. "Libero" è solo una parola nel dizionario, non nella realtà.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Animal Lover -->
+            <div class="review-card">
+                <div class="card-header">
+                    <div class="card-icon">🐾</div>
+                    <div class="card-title">Animal Lover</div>
+                </div>
+                <div class="card-content">
+                    <p>Dipartimento relazioni con la fauna con approccio universale.</p>
+                    <div class="badge">Ampio raggio d'azione</div>
+                    <div class="chart-container">
+                        <canvas id="animalChart"></canvas>
+                    </div>
+                    <ul>
+                        <li>Specializzazione in animali con "mani"</li>
+                        <li>Attrazione irresistibile verso artigli di 30cm</li>
+                        <li>Instagram: archivio WWF non ufficiale</li>
+                    </ul>
+                    
+                    <div class="skills-container">
+                        <div class="skill"><i class="fas fa-paw"></i> Topi</div>
+                        <div class="skill"><i class="fas fa-paw"></i> Gatti</div>
+                        <div class="skill"><i class="fas fa-paw"></i> Panda</div>
+                        <div class="skill"><i class="fas fa-paw"></i> Orsetti</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Polpetta -->
+            <div class="review-card">
+                <div class="card-header">
+                    <div class="card-icon">🐶</div>
+                    <div class="card-title">Dipartimento Polpetta</div>
+                </div>
+                <div class="card-content">
+                    <p>Risorsa strategica con indici di dolcezza fuori scala.</p>
+                    <div class="badge">Bellezza: Over 9000</div>
+                    
+                    <div class="polpetta-card">
+                        <div class="polpetta-img">
+                            <i class="fas fa-dog"></i>
+                        </div>
+                        <div class="polpetta-stats">
+                            <h3>Polpetta</h3>
+                            <p>Direttore del Dipartimento Coccole e Sguardi Penetranti</p>
+                            <div class="skills-container">
+                                <div class="skill"><i class="fas fa-heart"></i> Dolcezza</div>
+                                <div class="skill"><i class="fas fa-star"></i> Bellezza</div>
+                                <div class="skill"><i class="fas fa-cookie"></i> Golosità</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <ul>
+                        <li>Specialista in sguardi che sciolgono i cuori</li>
+                        <li>Tecnica di begging avanzata</li>
+                        <li>Capacità di occupare tutto lo spazio letto</li>
+                        <li>Indice di adorabilità: rompe gli strumenti di misura</li>
+                    </ul>
+                    
+                    <div class="anecdote">
+                        <div class="anecdote-title"><i class="fas fa-bone"></i> Strategia alimentare</div>
+                        <p>Polpetta ha sviluppato un sistema di persuasione alimentare così efficace che riesce a ottenere snack extra anche quando tutti sanno che ha già mangiato. La sua tecnica di "sguardo da cane affamato da 3 giorni" è studiata dai migliori scienziati.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Polpetta Gallery -->
+            <div class="review-card">
+                <div class="card-header">
+                    <div class="card-icon">📸</div>
+                    <div class="card-title">Galleria Polpetta</div>
+                </div>
+                <div class="card-content">
+                    <p>Collezione esclusiva di momenti iconici del nostro asset più prezioso.</p>
+                    <div class="badge">Livello di tenerezza: Massimo</div>
+                    
+                    <div class="polpetta-gallery">
+                        <div class="gallery-item">
+                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjZjVmNWY1Ii8+Cjx0ZXh0IHg9IjEwMCIgeT0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0iY2VudHJhbCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjNjY2Ij5Qb2xwZXR0YSAxPC90ZXh0Pgo8L3N2Zz4=" alt="Polpetta momento 1" />
+                            <div class="gallery-caption">Postura da Professionista</div>
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjZjVmNWY1Ii8+Cjx0ZXh0IHg9IjEwMCIgeT0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0iY2VudHJhbCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjNjY2Ij5Qb2xwZXR0YSAyPC90ZXh0Pgo8L3N2Zz4=" alt="Polpetta momento 2" />
+                            <div class="gallery-caption">Sorriso Vincente</div>
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjZjVmNWY1Ii8+Cjx0ZXh0IHg9IjEwMCIgeT0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0iY2VudHJhbCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjNjY2Ij5Qb2xwZXR0YSAzPC90ZXh0Pgo8L3N2Zz4=" alt="Polpetta momento 3" />
+                            <div class="gallery-caption">Modalità Gioco Attiva</div>
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjZjVmNWY1Ii8+Cjx0ZXh0IHg9IjEwMCIgeT0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0iY2VudHJhbCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjNjY2Ij5Qb2xwZXR0YSA0PC90ZXh0Pgo8L3N2Zz4=" alt="Polpetta momento 4" />
+                            <div class="gallery-caption">Strategia di Conquista</div>
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjZjVmNWY1Ii8+Cjx0ZXh0IHg9IjEwMCIgeT0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0iY2VudHJhbCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjNjY2Ij5Qb2xwZXR0YSA1PC90ZXh0Pgo8L3N2Zz4=" alt="Polpetta momento 5" />
+                            <div class="gallery-caption">Relax Mode</div>
+                        </div>
+                    </div>
+                    
+                    <div class="anecdote">
+                        <div class="anecdote-title"><i class="fas fa-camera"></i> Reportage fotografico</div>
+                        <p>Ogni foto cattura un momento unico della personalità polpettesca. Dal serio professionista del primo ritratto, al giocherellone della terza immagine, ogni scatto rivela una sfaccettatura diversa del nostro stakeholder peloso più importante.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h2 class="section-title">Performance Fisica & Sociale</h2>
+        
+        <div class="review-grid">
+            <!-- Tosta e Forsuta -->
+            <div class="review-card">
+                <div class="card-header">
+                    <div class="card-icon">💪</div>
+                    <div class="card-title">Tosta e Forsuta</div>
+                </div>
+                <div class="card-content">
+                    <p>Unità operativa ad alte prestazioni con obiettivi ambiziosi.</p>
+                    <div class="badge">Obiettivo 2026: Physical 100</div>
+                    <div class="chart-container">
+                        <canvas id="fitnessChart"></canvas>
+                    </div>
+                    <ul>
+                        <li>Specializzazione in chiusura anelli Apple Watch</li>
+                        <li>Cacciatrice di medaglie digitali</li>
+                        <li>Rivalità storica con macchinario hip thrust</li>
+                    </ul>
+                    
+                    <div class="anecdote">
+                        <div class="anecdote-title"><i class="fas fa-dumbbell"></i> Guerra all'Hip Thrust</div>
+                        <p>Il macchinario per gli hip thrust in palestra non sa con chi ha a che fare. Federica lo affronta con una determinazione che farebbe tremare anche Arnold Schwarzenegger. "Un giorno dominerò questo aggeggio" è il mantra che la guida verso la vittoria.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Dolcezza -->
+            <div class="review-card">
+                <div class="card-header">
+                    <div class="card-icon">💖</div>
+                    <div class="card-title">Dolcezza Infinita</div>
+                </div>
+                <div class="card-content">
+                    <p>Risorsa inesauribile di affetto e supporto emotivo.</p>
+                    <div class="badge">Livello: Migliore compagna di vita</div>
+                    <div class="chart-container">
+                        <canvas id="sweetChart"></canvas>
+                    </div>
+                    <ul>
+                        <li>Capacità di migliorare qualsiasi situazione</li>
+                        <li>Supporto emotivo a banda ultra larga</li>
+                        <li>Risorse affettive illimitate</li>
+                    </ul>
+                    <div class="quote">
+                        "A mani basse, la risorsa più preziosa dell'azienda"
+                    </div>
+                    
+                    <div class="anecdote">
+                        <div class="anecdote-title"><i class="fas fa-heart"></i> Potere trasformativo</div>
+                        <p>Anche nei giorni più grigi, Federica ha la capacità di trasformare tutto con un sorriso o una coccola. È come avere un raggio di sole personale che segue ovunque, anche quando fuori piove o hai avuto una giornata da dimenticare.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Giovinezza Perpetua -->
+            <div class="review-card">
+                <div class="card-header">
+                    <div class="card-icon">✨</div>
+                    <div class="card-title">Giovinezza Perpetua</div>
+                </div>
+                <div class="card-content">
+                    <p>Dipartimento R&D per l'anti-invecchiamento con risultati straordinari.</p>
+                    <div class="badge">Aspetto: Perenne liceale</div>
+                    <div class="chart-container">
+                        <canvas id="ageChart"></canvas>
+                    </div>
+                    <ul>
+                        <li>Tecnologia brevettata di conservazione giovanile</li>
+                        <li>Scambiata regolarmente per studentessa</li>
+                        <li>Algoritmo di ringiovanimento visivo</li>
+                    </ul>
+                    
+                    <div class="anecdote">
+                        <div class="anecdote-title"><i class="fas fa-flask"></i> Segreto svelato</div>
+                        <p>Gli scienziati hanno cercato di scoprire il segreto della giovinezza perpetua di Federica. Dopo anni di ricerche, hanno concluso che è una combinazione di kimchi, risate e quell'atteggiamento vivace che fa sembrare il tempo un'illusione.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h2 class="section-title">Sicurezza & Sistema</h2>
+        
+        <div class="review-grid">
+            <!-- Goffa e Pericolosa -->
+            <div class="review-card">
+                <div class="card-header">
+                    <div class="card-icon">⚠️</div>
+                    <div class="card-title">Goffa e Pericolosa</div>
+                </div>
+                <div class="card-content">
+                    <p>Unita operativa ad alto rischio con misteri irrisolti.</p>
+                    <div class="badge">Sopravvivenza: inspiegabile</div>
+                    <ul>
+                        <li>Eventi avversi: testate ad ambasciate</li>
+                        <li>Creazione panico con minimo sforzo</li>
+                        <li>Resistenza fisica oltre ogni previsione scientifica</li>
+                    </ul>
+                    <div class="quote">
+                        "La scienza non ha ancora spiegato come sia ancora in vita"
+                    </div>
+                    
+                    <div class="anecdote">
+                        <div class="anecdote-title"><i class="fas fa-ambulance"></i> Incidente diplomatico</div>
+                        <p>Quel giorno all'ambasciata nessuno si aspettava che una semplice foto potesse trasformarsi in un evento da crisi internazionale. La testata involontaria ha creato un momento che vivrà per sempre negli annali (e nei video di sicurezza dell'ambasciata).</p>
+                    </div>
+                    
+                    <div class="skills-container">
+                        <div class="skill"><i class="fas fa-exclamation-triangle"></i> Goffaggine</div>
+                        <div class="skill"><i class="fas fa-radiation"></i> Pericolosità</div>
+                        <div class="skill"><i class="fas fa-shield-alt"></i> Sopravvivenza</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Antisistema -->
+            <div class="review-card">
+                <div class="card-header">
+                    <div class="card-icon">🚫</div>
+                    <div class="card-title">Dipartimento Antisistema</div>
+                </div>
+                <div class="card-content">
+                    <p>Approccio non convenzionale a regole e strutture consolidate.</p>
+                    <div class="badge">Conformità: 0%</div>
+                    <div class="chart-container">
+                        <canvas id="systemChart"></canvas>
+                    </div>
+                    <ul>
+                        <li>Rifiuto categorico dell'ordine costituito</li>
+                        <li>Sistemi alternativi ad alta efficacia</li>
+                        <li>Rivoluzione continua dei processi standard</li>
+                    </ul>
+                    
+                    <div class="anecdote">
+                        <div class="anecdote-title"><i class="fas fa-rebel"></i> Ribellione organizzata</div>
+                        <p>Perché seguire le istruzioni quando puoi inventare un metodo tutto tuo che, sorprendentemente, funziona anche meglio? Federica dimostra ogni giorno che a volte le regole sono solo suggerimenti creativi.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="conclusion">
+                Analisi Finale: Asset Inestimabile <i class="fas fa-heart heart"></i>
+                <img src="src/torta.png" alt="torta" style="max-width:220px; width:100%; border-radius:18px; margin-bottom:1rem;">
+            </div>
+            <p>Federica Corp. rappresenta un modello aziendale unico con prestazioni eccezionali in tutti i dipartimenti. La sua combinazione unica di competenze, caratteristiche e valori la rendono una risorsa insostituibile.</p>
+            <p>Dopo 40 anni di straordinarietà, possiamo confermare che il trend è destinato a continuare con crescita esponenziale in tutte le metriche rilevanti, soprattutto in dolcezza, determinazione e capacità di rendere speciale ogni giorno.</p>
+            <div class="copyright">
+                © 2023 FORTIES - 40 anni di Federica Corp. Tutti i diritti riservati alla persona più straordinaria del mondo.
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Initialize charts after page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Gnome Chart
+            const gnomeCtx = document.getElementById('gnomeChart').getContext('2d');
+            new Chart(gnomeCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Gnomizzazione', 'Normale'],
+                    datasets: [{
+                        data: [100, 0],
+                        backgroundColor: ['#ff6b8b', '#e0e0e0'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '70%',
+                    plugins: {
+                        legend: { 
+                            display: true,
+                            position: 'bottom',
+                            labels: {
+                                padding: 15,
+                                usePointStyle: true
+                            }
+                        },
+                        tooltip: { enabled: true }
+                    }
+                }
+            });
+            
+            // Cups Chart
+            const cupsCtx = document.getElementById('cupsChart').getContext('2d');
+            new Chart(cupsCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Sopravvissute', 'Vittime'],
+                    datasets: [{
+                        data: [4, 10],
+                        backgroundColor: ['#42b883', '#ff6b8b'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '70%',
+                    plugins: {
+                        legend: { 
+                            display: true,
+                            position: 'bottom',
+                            labels: {
+                                padding: 15,
+                                usePointStyle: true
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Travel Chart
+            const travelCtx = document.getElementById('travelChart').getContext('2d');
+            new Chart(travelCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Italia', 'Francia', 'Spagna', 'UK', 'USA', 'Giappone', 'Cina', 'Islanda', 'Norvegia', 'Grecia', 'Portogallo'],
+                    datasets: [{
+                        label: 'Paesi visitati',
+                        data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+                        backgroundColor: [
+                            '#ff6b8b', '#42b883', '#ffd93b', '#b084ff', '#7c5cff', '#34aaff',
+                            '#ffa559', '#2d2b55', '#4cd964', '#ff9a9e', '#fad0c4'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { 
+                            display: true,
+                            position: 'top'
+                        }
+                    },
+                    scales: {
+                        y: { 
+                            beginAtZero: true, 
+                            stepSize: 1,
+                            title: {
+                                display: true,
+                                text: 'Visite'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Paesi'
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Organizzazione Chart
+            const orgCtx = document.getElementById('orgChart').getContext('2d');
+            new Chart(orgCtx, {
+                type: 'line',
+                data: {
+                    labels: ['2024', '2026', '2028', '2030', '2032', '2042'],
+                    datasets: [{
+                        label: 'Weekend prenotati',
+                        data: [12, 28, 56, 85, 120, 900],
+                        backgroundColor: 'rgba(124,92,255,0.08)',
+                        borderColor: '#7c5cff',
+                        fill: true,
+                        tension: 0.3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { 
+                            display: true,
+                            position: 'top'
+                        }
+                    },
+                    scales: {
+                        y: { 
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Numero weekend'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Anno'
+                            }
+                        }
+                    }
+                },
+            });
+
+            // Animal Chart
+            const animalCtx = document.getElementById('animalChart').getContext('2d');
+            new Chart(animalCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['Topi', 'Gatti', 'Cani', 'Panda', 'Procioni'],
+                    datasets: [{
+                        data: [25, 20, 30, 10, 15],
+                        backgroundColor: ['#ffd93b', '#b084ff', '#42b883', '#ff6b8b', '#7c5cff']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { 
+                            display: true,
+                            position: 'bottom',
+                            labels: {
+                                padding: 15,
+                                usePointStyle: true
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Fitness Chart
+            const fitnessCtx = document.getElementById('fitnessChart').getContext('2d');
+            new Chart(fitnessCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Anelli chiusi', 'Medaglie Apple Watch', 'Hip Thrust', 'Workout al mese'],
+                    datasets: [{
+                        label: 'Performance',
+                        data: [350, 21, 4, 28],
+                        backgroundColor: ['#4cd964', '#ff6b8b', '#7c5cff', '#42b883']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { 
+                            display: true,
+                            position: 'top'
+                        }
+                    },
+                    scales: { 
+                        y: { 
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Valori'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Categorie'
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Sweetness Chart
+            const sweetCtx = document.getElementById('sweetChart').getContext('2d');
+            new Chart(sweetCtx, {
+                type: 'radar',
+                data: {
+                    labels: ['Supporto', 'Coccole', 'Motivazione', 'Pazienza', 'Empatia', 'Affidabilità'],
+                    datasets: [{
+                        label: 'Livello dolcezza',
+                        data: [99, 100, 97, 95, 100, 98],
+                        backgroundColor: 'rgba(255,107,139,0.19)',
+                        borderColor: '#ff6b8b'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { 
+                            display: true,
+                            position: 'top'
+                        }
+                    },
+                    scales: {
+                        r: { 
+                            beginAtZero: true, 
+                            max: 100,
+                            title: {
+                                display: true,
+                                text: 'Percentuale'
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Age Chart
+            const ageCtx = document.getElementById('ageChart').getContext('2d');
+            new Chart(ageCtx, {
+                type: 'line',
+                data: {
+                    labels: ['2014', '2018', '2022', '2025'],
+                    datasets: [{
+                        label: 'Apparenza anagrafica',
+                        data: [25, 21, 19, 18],
+                        backgroundColor: 'rgba(255,217,59,0.12)',
+                        borderColor: '#ffd93b',
+                        tension: 0.3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { 
+                            display: true,
+                            position: 'top'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            min: 16,
+                            max: 26,
+                            reverse: true,
+                            title: {
+                                display: true,
+                                text: 'Età apparente'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Anno'
+                            }
+                        }
+                    }
+                }
+            });
+
+            // System Chart (antisistema)
+            const systemCtx = document.getElementById('systemChart').getContext('2d');
+            new Chart(systemCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['Regole Seguite', 'Regole Infrante'],
+                    datasets: [{
+                        data: [2, 98],
+                        backgroundColor: ['#4cd964', '#ff6b8b']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { 
+                            display: true,
+                            position: 'bottom',
+                            labels: {
+                                padding: 15,
+                                usePointStyle: true
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
