@@ -808,10 +808,6 @@
         /* Aggiungi questo alla fine del tuo CSS, prima delle media queries esistenti */
 
         @media (max-width: 768px) {
-            .main-title {
-                font-size: 20em;
-                line-height: 1.2;
-            }
         
             .header-content {
                 padding: 1rem;
@@ -1139,7 +1135,7 @@
                 </div>
                 <div class="stat-card">
                     <div class="stat-value">∞</div>
-                    <div class="stat-label">Dolcezza Polpetta</div>
+                    <div class="stat-label">Dolcezza</div>
                 </div>
             </div>
         </div>
@@ -1149,23 +1145,30 @@
         <h2 class="section-title">Analisi dei Dipartimenti</h2>
         
         <div class="review-grid">
+            <div class="review-card">
+                <div class="card-content" style="text-align:center; font-style:italic">
+                    <div class="title">Abbiamo chiesto ai nostri Dipartimenti di analizzare le aree comportamentali e caratteriali di rilevanza strategica, e abbiamo dimostrato che negli ultimi 40 anni Federica si è affermata con decisione come Leader del settore.</div>
+            </div>
+        </div>
+            
             <!-- Gnomizzazione -->
             <div class="review-card">
                 <div class="card-header">
                     <div class="card-icon">🧙‍♀️</div>
-                    <div class="card-title">Gnomizzazione</div>
+                    <div class="card-title">Protocollo G.N.O.M.O.</div>
                 </div>
                 <div class="card-content">
-                    <p>Processo di trasformazione unico con livelli di intensità variabili.</p>
+                    <p>Gestione Nevrosi Ordinaria per il Monitoraggio delle Ostilità</p>
                     <div class="badge">Efficacia: 100%</div>
                     <div class="chart-container">
                         <canvas id="gnomeChart"></canvas>
                     </div>
                     <ul>
-                        <li>Attivazione con modifiche minime ai piani</li>
-                        <li>Postura caratteristica a piedi larghi</li>
-                        <li>Vibrazioni ad alta frequenza</li>
-                        <li>Effetto sorprendente su osservatori</li>
+                        <li>Eventi registrati nel 2024: 23</li>
+                        <li>Livello medio di gnomizzazione: 7.2/10</li>
+                        <li>Tempo di recupero medio: 47 minuti</li>
+                        <li>Postura caratteristica a piedi larghi: 100% dei casi</li>
+                        <li>Efficacia del protocollo: Comprovata</li>
                     </ul>
                     
                     <div class="gnome-alert">
@@ -1267,7 +1270,7 @@
 
                 <div class="card-content" style="text-align:center;">
                     <div class="polpetta-title">La Voce di Polpetta</div>
-                    <img src="src/Cane - Polpetta (1).png" alt="Polpetta 1" style="max-width:220px; width:100%; border-radius:18px; margin-bottom:1rem;">
+                    <img src="src/Cane - Polpetta (2).png" alt="Polpetta 1" style="max-width:220px; width:100%; border-radius:18px; margin-bottom:1rem;">
                     <div class="quote">"Federica? Ma chi, quella che mi prepara la pappa?"</div>
                 </div>
             </div>
@@ -1727,32 +1730,126 @@
                 };
 
                 switch(chartId) {
+
                     case 'gnomeChart':
                         new Chart(ctx, {
-                            type: 'doughnut',
+                            type: 'bar',
                             data: {
-                                labels: ['Gnomizzazione', 'Normale'],
+                                labels: [
+                                    'Cambio Programma\nPre-Matrimonio', 
+                                    'Cellulare del lavoro\nPerso', 
+                                    'Conversazione con\nDaniele', 
+                                    'Fame\nImrpovvisa',
+                                    'Spostamento oggetto\nNon autorizzato',
+                                    'Dimenticanza\nMarito'
+                                ],
                                 datasets: [{
-                                    data: [100, 0],
-                                    backgroundColor: ['#ff6b8b', '#e0e0e0'],
-                                    borderWidth: 0
+                                    label: 'Livello di Gnomizzazione (1-10)',
+                                    data: [10, 6, 8, 5, 9, 4],
+                                    backgroundColor: [
+                                        '#ff3860', // Rosso intenso per livello 9
+                                        '#ff6b8b', // Rosa-rosso per livello 7
+                                        '#ff9a9e', // Rosa chiaro per livello 6
+                                        '#ff4757', // Rosso medio per livello 8
+                                        '#ffa502', // Arancione per livello 5
+                                        '#ff6b8b'  // Rosa-rosso per livello 7
+                                    ],
+                                    borderColor: '#fff',
+                                    borderWidth: 2,
+                                    borderRadius: 8,
+                                    borderSkipped: false,
                                 }]
                             },
                             options: {
                                 responsive: true,
                                 maintainAspectRatio: false,
-                                cutout: '70%',
-                                animation: animationConfig,
+                                animation: {
+                                    ...animationConfig,
+                                    delay: (context) => {
+                                        return context.dataIndex * 200; // Animazione ritardata per ogni barra
+                                    }
+                                },
                                 plugins: {
                                     legend: { 
                                         display: true,
-                                        position: 'bottom',
+                                        position: 'top',
                                         labels: {
-                                            padding: 15,
-                                            usePointStyle: true
+                                            usePointStyle: true,
+                                            padding: 15
                                         }
                                     },
-                                    tooltip: { enabled: true }
+                                    tooltip: {
+                                        backgroundColor: 'rgba(45, 43, 85, 0.9)',
+                                        titleColor: '#fff',
+                                        bodyColor: '#fff',
+                                        borderColor: '#ff6b8b',
+                                        borderWidth: 1,
+                                        callbacks: {
+                                            afterLabel: function(context) {
+                                                const level = context.parsed.y;
+                                                if (level >= 8) return '🚨 EMERGENZA GNOMO!';
+                                                if (level >= 6) return '⚠️ Allerta Moderata';
+                                                if (level >= 4) return '📢 Attenzione';
+                                                return '😌 Situazione Gestibile';
+                                            }
+                                        }
+                                    }
+                                },
+                                scales: {
+                                    y: { 
+                                        beginAtZero: true,
+                                        max: 10,
+                                        title: {
+                                            display: true,
+                                            text: 'Intensità Gnomizzazione',
+                                            color: '#2d2b55',
+                                            font: {
+                                                weight: 'bold'
+                                            }
+                                        },
+                                        ticks: {
+                                            color: '#2d2b55',
+                                            callback: function(value) {
+                                                const labels = {
+                                                    1: '😐 Minima',
+                                                    2: '😐 Minima', 
+                                                    3: '😟 Lieve',
+                                                    4: '😟 Lieve',
+                                                    5: '😠 Media',
+                                                    6: '😠 Media',
+                                                    7: '🤬 Alta',
+                                                    8: '🤬 Alta',
+                                                    9: '🧙‍♀️ CRITICA',
+                                                    10: '🧙‍♀️ MASSIMA'
+                                                };
+                                                return labels[value] || value;
+                                            }
+                                        },
+                                        grid: {
+                                            color: 'rgba(255, 107, 139, 0.1)'
+                                        }
+                                    },
+                                    x: {
+                                        title: {
+                                            display: true,
+                                            text: 'Eventi Scatenanti',
+                                            color: '#2d2b55',
+                                            font: {
+                                                weight: 'bold'
+                                            }
+                                        },
+                                        ticks: {
+                                            color: '#2d2b55',
+                                            maxRotation: 45,
+                                            minRotation: 0,
+                                            font: {
+                                                size: 10
+                                            }
+                                        },
+                                        grid: {
+                                            display: false
+                                        }
+                                    }
                                 }
                             }
                         });
@@ -1848,7 +1945,7 @@
                                 labels: ['2024', '2026', '2028', '2030', '2032', '2042'],
                                 datasets: [{
                                     label: 'Weekend prenotati',
-                                    data: [12, 28, 56, 85, 120, 900],
+                                    data: [52, 48, 32, 38, 45, 39],
                                     backgroundColor: 'rgba(124,92,255,0.08)',
                                     borderColor: '#7c5cff',
                                     fill: true,
