@@ -99,19 +99,18 @@
         }
         
         .stats-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin: 2rem 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 2rem auto;
+            max-width: 600px;
         }
         
         .stat-card {
             background: rgba(255,255,255,0.2);
             backdrop-filter: blur(10px);
             border-radius: 15px;
-            padding: 1.2rem;
-            min-width: 150px;
+            padding: 1rem;
             text-align: center;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
@@ -122,14 +121,16 @@
         }
         
         .stat-value {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
+            line-height: 1;
         }
         
         .stat-label {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             opacity: 0.9;
+            line-height: 1.2;
         }
         
         .container {
@@ -434,6 +435,123 @@
             opacity: 0.7;
             font-size: 0.9rem;
         }
+
+                .poem-container {
+            background: linear-gradient(135deg, #f8f4e6, #f5f0e1);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid #d4af37;
+            box-shadow: inset 0 2px 10px rgba(212, 175, 55, 0.1);
+            position: relative;
+        }
+        
+        .poem-container::before {
+            content: """;
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            font-size: 4rem;
+            color: #d4af37;
+            opacity: 0.3;
+            font-family: serif;
+        }
+        
+        .poem-verse {
+            margin-bottom: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+        }
+        
+        .poem-verse:last-child {
+            margin-bottom: 0;
+        }
+        
+        .verse-line {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #5d4e37;
+            margin-bottom: 0.3rem;
+            padding-left: 1rem;
+        }
+        
+        .poem-signature {
+            text-align: center;
+            margin: 2rem 0 1.5rem 0;
+            font-style: italic;
+        }
+        
+        .signature-line {
+            font-size: 1rem;
+            color: #d4af37;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .signature-date {
+            font-size: 0.85rem;
+            color: #8b7355;
+            opacity: 0.8;
+        }
+        
+        .memorial-box {
+            background: linear-gradient(135deg, #2c2c2c, #3a3a3a);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: center;
+            color: white;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .memorial-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+        
+        .memorial-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #f0f0f0;
+        }
+        
+        .memorial-subtitle {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+            opacity: 0.9;
+        }
+        
+        .memorial-dates {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-bottom: 1rem;
+        }
+        
+        .memorial-quote {
+            font-style: italic;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .poem-container {
+                padding: 1.5rem;
+            }
+            
+            .verse-line {
+                font-size: 1rem;
+                padding-left: 0.5rem;
+            }
+            
+            .memorial-box {
+                padding: 1rem;
+            }
+        }
         
         /* Animations */
         @keyframes float {
@@ -631,6 +749,141 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        .love-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .love-stat-item {
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            border-radius: 15px;
+            padding: 1rem;
+            text-align: center;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 80px;
+        }
+        
+        .love-icon {
+            font-size: 1.8rem;
+            margin-right: 0.8rem;
+        }
+        
+        .love-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+        
+        .love-label {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+        
+        .trophy-box {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+        
+        .trophy-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        
+        .trophy-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: bounce 2s infinite;
+        }
+        
+        .trophy-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #2d2b55;
+            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .trophy-subtitle {
+            font-size: 0.9rem;
+            color: #2d2b55;
+            opacity: 0.8;
+        }
+        
+        .trophy-year {
+            font-size: 0.8rem;
+            color: #2d2b55;
+            opacity: 0.7;
+            margin-top: 0.3rem;
+        }
+        
+        .love-alert {
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #ff6b8b, #ff9a9e);
+            color: white;
+            padding: 1rem;
+            border-radius: 15px;
+            margin: 1rem 0;
+        }
+        
+        .alert-icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            animation: pulse 1.5s infinite;
+        }
+        
+        .alert-content strong {
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .love-stats {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+            
+            .love-stat-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .love-icon {
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+            }
+            
+            .trophy-title {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -732,6 +985,61 @@
                     <div class="anecdote">
                         <div class="anecdote-title"><i class="fas fa-heart-broken"></i> Tragedia annunciata</div>
                         <p>Le bomboniere del matrimonio dovevano essere perfette. Ore di lavoro, tazze dipinte con cura... solo per scoprire che il servizio postale ha un approccio "creative packaging" che non condividiamo. Il suono delle tazze che si rompevano aprendo i pacchi resterà nei nostri incubi.</p>
+                    </div>
+                </div>
+            </div>
+
+                        <!-- Ode alle Tazze Rotte -->
+            <div class="review-card">
+                <div class="card-header">
+                    <div class="card-icon">📜</div>
+                    <div class="card-title">Ode alle Tazze Rotte</div>
+                </div>
+                <div class="card-content">
+                    <p>Componimento poetico in memoria delle vittime dell'Operazione Tazze.</p>
+                    <div class="badge">Stile: Lirico drammatico</div>
+                    
+                    <div class="poem-container">
+                        <div class="poem-verse">
+                            <div class="verse-line">Due dozzine funron create</div>
+                            <div class="verse-line">con un sol tocco di pennello</div>
+                            <div class="verse-line">come sorelle, belle e colorate</div>
+                            <div class="verse-line">mancaron mezze, ahimè, all'appello</div>
+                        </div>
+                        
+                        <div class="poem-verse">
+                            <div class="verse-line">Tanto'è l'amor che fù profuso</div>
+                            <div class="verse-line">che ogni crepa che or le adorna</div>
+                            <div class="verse-line">insigna è di un dono illuso</div>
+                            <div class="verse-line">del peregrin che parte e non ritorna</div>
+                        </div>
+                        
+                        <div class="poem-verse">
+                            <div class="verse-line">Seppur il dolor colpisca importuno</div>
+                            <div class="verse-line">cotanto belle son le risparmiate</div>
+                            <div class="verse-line">che l'altre, oramai sol coccio bruno,</div>
+                            <div class="verse-line">nel cuor mio restan immacolate</div>
+                        </div>
+                    </div>
+                    
+                    <div class="poem-signature">
+                        <div class="signature-line">~ Anonimo del XXI secolo ~</div>
+                        <div class="signature-date">Composto durante la Grande Tragedia delle Bomboniere, 2024</div>
+                    </div>
+                    
+                    <div class="anecdote">
+                        <div class="anecdote-title"><i class="fas fa-quill-pen"></i> Genesi dell'opera</div>
+                        <p>Questo componimento nacque spontaneamente dalla penna di un poeta anonimo, testimone oculare della tragedia. Le parole fluirono come lacrime di ceramica, immortalando per sempre il dolore e la bellezza di quelle tazze che, seppur spezzate nel corpo, rimangono intatte nell'anima di chi le ha create con amore.</p>
+                    </div>
+                    
+                    <div class="memorial-box">
+                        <div class="memorial-icon">🕯️</div>
+                        <div class="memorial-text">
+                            <div class="memorial-title">In Memoriam</div>
+                            <div class="memorial-subtitle">Alle 10 tazze che non ce l'hanno fatta</div>
+                            <div class="memorial-dates">2024 - 2024</div>
+                            <div class="memorial-quote">"Fragili nel corpo, eterne nel ricordo"</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1049,6 +1357,77 @@
                     <div class="anecdote">
                         <div class="anecdote-title"><i class="fas fa-rebel"></i> Ribellione organizzata</div>
                         <p>Perché seguire le istruzioni quando puoi inventare un metodo tutto tuo che, sorprendentemente, funziona anche meglio? Federica dimostra ogni giorno che a volte le regole sono solo suggerimenti creativi.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Relazione Giuseppe & Federica -->
+            <div class="review-card">
+                <div class="card-header">
+                    <div class="card-icon">💕</div>
+                    <div class="card-title">Dipartimento Relazioni Amorose</div>
+                </div>
+                <div class="card-content">
+                    <p>Analisi delle performance relazionali con crescita esponenziale dal 2021.</p>
+                    <div class="badge">Status: Coppia del Secolo</div>
+                    <div class="chart-container">
+                        <canvas id="loveChart"></canvas>
+                    </div>
+                    
+                    <div class="love-stats">
+                        <div class="love-stat-item">
+                            <div class="love-icon">💋</div>
+                            <div class="love-data">
+                                <div class="love-number">∞</div>
+                                <div class="love-label">Baci all'ora (2024)</div>
+                            </div>
+                        </div>
+                        <div class="love-stat-item">
+                            <div class="love-icon">👃</div>
+                            <div class="love-data">
+                                <div class="love-number">847</div>
+                                <div class="love-label">Soffi nel naso/mese</div>
+                            </div>
+                        </div>
+                        <div class="love-stat-item">
+                            <div class="love-icon">🤗</div>
+                            <div class="love-data">
+                                <div class="love-number">24/7</div>
+                                <div class="love-label">Coccole disponibili</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="trophy-box">
+                        <div class="trophy-container">
+                            <div class="trophy-icon">🏆</div>
+                            <div class="trophy-content">
+                                <div class="trophy-title">PREMIO MIGLIOR COPPIA DEL SECOLO</div>
+                                <div class="trophy-subtitle">Categoria: Dolcezza Infinita</div>
+                                <div class="trophy-year">2021-∞</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <ul>
+                        <li>Crescita baci: +2847% dal primo incontro</li>
+                        <li>Livello di compatibilità: Off the charts</li>
+                        <li>Tempo medio senza bacini: 3.7 secondi</li>
+                        <li>Resistenza ai litigiucci: Titanio</li>
+                    </ul>
+                    
+                    <div class="anecdote">
+                        <div class="anecdote-title"><i class="fas fa-heartbeat"></i> Crescita esponenziale</div>
+                        <p>Dal 2021, anno zero dell'era Giuseppe-Federica, si è registrato un aumento allarmante (nel senso più dolce del termine) di bacini, coccole e momenti di tenerezza. Gli esperti confermano: "Non abbiamo mai visto nulla del genere. I livelli di dolcezza sono così alti che stanno riscrivendo i manuali di chimica amorosa."</p>
+                    </div>
+
+                    <div class="love-alert">
+                        <div class="alert-icon">⚠️</div>
+                        <div class="alert-content">
+                            <strong>ALLERTA DOLCEZZA</strong>
+                            <div>Livelli di tenerezza pericolosamente alti rilevati</div>
+                            <small>Ultimo picco: Ogni singolo momento insieme</small>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1426,6 +1805,64 @@
                                         labels: {
                                             padding: 15,
                                             usePointStyle: true
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                        break;
+
+                    case 'loveChart':
+                        new Chart(ctx, {
+                            type: 'line',
+                            data: {
+                                labels: ['2020', '2021', '2022', '2023', '2024'],
+                                datasets: [{
+                                    label: 'Baci all\'ora',
+                                    data: [0, 5, 25, 67, 150],
+                                    backgroundColor: 'rgba(255,107,139,0.1)',
+                                    borderColor: '#ff6b8b',
+                                    fill: true,
+                                    tension: 0.4,
+                                    pointBackgroundColor: '#ff6b8b',
+                                    pointBorderColor: '#fff',
+                                    pointBorderWidth: 3,
+                                    pointRadius: 6
+                                }, {
+                                    label: 'Soffi nel naso (decine)',
+                                    data: [0, 2, 12, 35, 85],
+                                    backgroundColor: 'rgba(124,92,255,0.1)',
+                                    borderColor: '#7c5cff',
+                                    fill: true,
+                                    tension: 0.4,
+                                    pointBackgroundColor: '#7c5cff',
+                                    pointBorderColor: '#fff',
+                                    pointBorderWidth: 3,
+                                    pointRadius: 6
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                animation: animationConfig,
+                                plugins: {
+                                    legend: { 
+                                        display: true,
+                                        position: 'top'
+                                    }
+                                },
+                                scales: {
+                                    y: { 
+                                        beginAtZero: true,
+                                        title: {
+                                            display: true,
+                                            text: 'Frequenza'
+                                        }
+                                    },
+                                    x: {
+                                        title: {
+                                            display: true,
+                                            text: 'Anno della Relazione'
                                         }
                                     }
                                 }
