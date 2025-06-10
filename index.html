@@ -248,6 +248,201 @@
                 padding: 0;
             }
         }
+
+        /* Gift section */
+        .gift-section {
+            background: linear-gradient(135deg, #ff6b8b, #7c5cff);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+            color: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .gift-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .code-input-container {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .gift-input {
+            padding: 0.8rem 1.2rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            text-align: center;
+            min-width: 200px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        
+        .gift-input:focus {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .gift-button {
+            padding: 0.8rem 1.5rem;
+            background: white;
+            color: #7c5cff;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        
+        .gift-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            background: #f0f0f0;
+        }
+        
+        .error-message {
+            color: #ffeb3b;
+            font-weight: 600;
+            margin-top: 1rem;
+            animation: shake 0.5s ease-in-out;
+        }
+        
+        .gift-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        .gift-content {
+            text-align: center;
+            color: white;
+            max-width: 90%;
+            max-height: 90%;
+        }
+        
+        .boarding-pass-container {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .boarding-pass {
+            max-width: 500px;
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5));
+            animation: boardingPassFloat 3s ease-in-out infinite;
+        }
+        
+        .gift-message h2 {
+            font-size: 2.5rem;
+            color: #ffd93b;
+            margin-bottom: 1rem;
+            text-shadow: 0 3px 10px rgba(0,0,0,0.5);
+        }
+        
+        .gift-message p {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+        
+        .close-gift-btn {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #ff6b8b, #7c5cff);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .close-gift-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
+        
+        @keyframes boardingPassFloat {
+            0% { 
+                transform: translateY(0px) rotate(0deg); 
+            }
+            25% { 
+                transform: translateY(-10px) rotate(1deg); 
+            }
+            50% { 
+                transform: translateY(-15px) rotate(-1deg); 
+            }
+            75% { 
+                transform: translateY(-8px) rotate(2deg); 
+            }
+            100% { 
+                transform: translateY(0px) rotate(0deg); 
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { 
+                opacity: 0; 
+                transform: scale(0.9); 
+            }
+            to { 
+                opacity: 1; 
+                transform: scale(1); 
+            }
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        
+        @media (max-width: 768px) {
+            .code-input-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .gift-input {
+                min-width: 250px;
+            }
+            
+            .boarding-pass {
+                max-width: 100%;
+            }
+            
+            .gift-message h2 {
+                font-size: 2rem;
+            }
+            
+            .gift-message p {
+                font-size: 1.1rem;
+            }
+        }
         
         .badge {
             display: inline-block;
@@ -366,6 +561,23 @@
         .gnome-text {
             flex: 1;
         }
+
+        .gnome-icon {
+            font-size: 2rem;
+            margin-right: 1rem;
+            color: #7c5cff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+              
+        /* Alternativa più semplice se il filtro non funziona */
+        .gnome-svg-icon {
+            width: 4rem;
+            height: 4rem;
+            fill: #ff3860;
+            filter: brightness(0) saturate(100%) invert(19%) sepia(95%) saturate(7471%) hue-rotate(349deg) brightness(93%) contrast(98%);
+        }
         
         .gnome-level {
             font-weight: 700;
@@ -395,6 +607,15 @@
             font-size: 3rem;
             color: #ff6b8b;
             border: 3px solid #ff6b8b;
+        }
+
+        .polpetta-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #ca65b9;
+            font-style: italic;
+            font-family: 'Playfair Display';
         }
         
         .polpetta-stats {
@@ -948,7 +1169,9 @@
                     </ul>
                     
                     <div class="gnome-alert">
-                        <div class="gnome-icon">🧝‍♀️</div>
+                        <div class="gnome-icon">
+                            <img src="src/gnome-silhouette.svg" alt="Gnomo" class="gnome-svg-icon">
+                        </div>
                         <div class="gnome-text">
                             <strong>Allerta Gnomizzazione</strong>
                             <div>Livello attuale: <span class="gnome-level">Livello 3 - Pericolo Imminente</span></div>
@@ -1008,7 +1231,7 @@
                         </div>
                         
                         <div class="poem-verse">
-                            <div class="verse-line">Tanto'è l'amor che fù profuso</div>
+                            <div class="verse-line">Tant'è l'amor che fù profuso</div>
                             <div class="verse-line">che ogni crepa che or le adorna</div>
                             <div class="verse-line">insigna è di un dono illuso</div>
                             <div class="verse-line">del peregrin che parte e non ritorna</div>
@@ -1024,20 +1247,15 @@
                     
                     <div class="poem-signature">
                         <div class="signature-line">~ Anonimo del XXI secolo ~</div>
-                        <div class="signature-date">Composto durante la Grande Tragedia delle Bomboniere, 2024</div>
+                        <div class="signature-date">Composto durante la Grande Tragedia delle Bomboniere, 2025</div>
                     </div>
-                    
-                    <div class="anecdote">
-                        <div class="anecdote-title"><i class="fas fa-quill-pen"></i> Genesi dell'opera</div>
-                        <p>Questo componimento nacque spontaneamente dalla penna di un poeta anonimo, testimone oculare della tragedia. Le parole fluirono come lacrime di ceramica, immortalando per sempre il dolore e la bellezza di quelle tazze che, seppur spezzate nel corpo, rimangono intatte nell'anima di chi le ha create con amore.</p>
-                    </div>
-                    
+                                      
                     <div class="memorial-box">
                         <div class="memorial-icon">🕯️</div>
                         <div class="memorial-text">
                             <div class="memorial-title">In Memoriam</div>
                             <div class="memorial-subtitle">Alle 10 tazze che non ce l'hanno fatta</div>
-                            <div class="memorial-dates">2024 - 2024</div>
+                            <div class="memorial-dates">Mag 2025 - Giu 2025</div>
                             <div class="memorial-quote">"Fragili nel corpo, eterne nel ricordo"</div>
                         </div>
                     </div>
@@ -1048,8 +1266,9 @@
             <div class="review-card">
 
                 <div class="card-content" style="text-align:center;">
+                    <div class="polpetta-title">La Voce di Polpetta</div>
                     <img src="src/Cane - Polpetta (1).png" alt="Polpetta 1" style="max-width:220px; width:100%; border-radius:18px; margin-bottom:1rem;">
-                    <div class="quote">"Lo sguardo che conquista tutti."</div>
+                    <div class="quote">"Federica? Ma chi, quella che mi prepara la pappa?"</div>
                 </div>
             </div>
 
@@ -1442,12 +1661,41 @@
             </div>
             <p>Federica Corp. rappresenta un modello aziendale unico con prestazioni eccezionali in tutti i dipartimenti. La sua combinazione unica di competenze, caratteristiche e valori la rendono una risorsa insostituibile.</p>
             <p>Dopo 40 anni di straordinarietà, possiamo confermare che il trend è destinato a continuare con crescita esponenziale in tutte le metriche rilevanti, soprattutto in dolcezza, determinazione e capacità di rendere speciale ogni giorno.</p>
+            
+            <!-- Sezione Regalo -->
+            <div class="gift-section">
+                <div class="gift-title">🎁 Sezione Speciale 🎁</div>
+                <p>Inserisci il codice segreto per sbloccare il tuo regalo di compleanno!</p>
+                <div class="code-input-container">
+                    <input type="text" id="giftCode" placeholder="Inserisci il codice..." class="gift-input">
+                    <button onclick="checkGiftCode()" class="gift-button">Sblocca Regalo</button>
+                </div>
+                <div id="errorMessage" class="error-message" style="display: none;">
+                    Codice errato! Riprova... 🤔
+                </div>
+            </div>
+            
             <div class="copyright">
                 © 2023 FORTIES - 40 anni di Federica Corp. Tutti i diritti riservati alla persona più straordinaria del mondo.
             </div>
         </div>
     </footer>
-    
+
+    <!-- Overlay Regalo -->
+    <div id="giftOverlay" class="gift-overlay" style="display: none;">
+        <div class="gift-content">
+            <div class="boarding-pass-container">
+                <img src="src/boarding-pass.png" alt="Boarding Pass" class="boarding-pass">
+            </div>
+            <div class="gift-message">
+                <h2>Complimenti!</h2>
+                <p>La tua incredibile performance merita di essere premiata.<br>
+                Hai vinto un viaggio gratis da riscattare quando vuoi!</p>
+                <button onclick="closeGift()" class="close-gift-btn">Chiudi</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Configurazione per l'animazione dei grafici quando entrano nel viewport
@@ -1870,6 +2118,56 @@
                         });
                         break;
                 }
+            }
+        });
+
+        // Codice segreto per il regalo
+        const SECRET_CODE = "FEDERICA40"; // Cambia questo con il codice che preferisci
+        
+        function checkGiftCode() {
+            const inputCode = document.getElementById('giftCode').value.toUpperCase().trim();
+            const errorMessage = document.getElementById('errorMessage');
+            const giftOverlay = document.getElementById('giftOverlay');
+            
+            if (inputCode === SECRET_CODE) {
+                // Codice corretto - mostra il regalo
+                giftOverlay.style.display = 'flex';
+                errorMessage.style.display = 'none';
+                document.getElementById('giftCode').value = '';
+                
+                // Impedisce lo scroll del background
+                document.body.style.overflow = 'hidden';
+            } else {
+                // Codice errato - mostra errore
+                errorMessage.style.display = 'block';
+                document.getElementById('giftCode').value = '';
+                
+                // Nascondi errore dopo 3 secondi
+                setTimeout(() => {
+                    errorMessage.style.display = 'none';
+                }, 3000);
+            }
+        }
+        
+        function closeGift() {
+            const giftOverlay = document.getElementById('giftOverlay');
+            giftOverlay.style.display = 'none';
+            
+            // Riabilita lo scroll del background
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Permetti di premere Enter per verificare il codice
+        document.getElementById('giftCode').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkGiftCode();
+            }
+        });
+        
+        // Chiudi l'overlay cliccando fuori dal contenuto
+        document.getElementById('giftOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeGift();
             }
         });
     </script>
