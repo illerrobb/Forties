@@ -443,6 +443,86 @@
                 font-size: 1.1rem;
             }
         }
+
+        .tickets-container {
+            margin: 2rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .ticket-stack {
+            position: relative;
+            width: 350px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .ticket {
+            position: absolute;
+            width: 100%;
+            object-fit: contain;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            transition: all 0.6s ease-in-out;
+        }
+        
+        .ticket-1 {
+            z-index: 4;
+            animation: ticketFlip1 6s infinite ease-in-out;
+            
+        }
+        
+        .ticket-2 {
+            z-index: 3;
+            animation: ticketFlip2 6s infinite ease-in-out;
+            
+        }
+        
+        /* Animazioni semplificate - solo movimento verticale e z-index */
+        @keyframes ticketFlip1 {
+        0%, 100% { transform: translateY(0); z-index: 4; }
+        25% { transform: translateY(-100px); z-index: 4; }
+        26% { transform: translateY(-100px); z-index: 3; }
+        50% { transform: translateY(0); z-index: 3; }
+        75% { transform: translateY(20PX); z-index: 4; }
+        }
+
+        @keyframes ticketFlip2 {
+        0%, 100% { transform: translateY(0); z-index: 3; }
+        25% { transform: translateY(20px); z-index: 3; }
+        50% { transform: translateY(0); z-index: 4; }
+        75% { transform: translateY(-100px); z-index: 4; }
+        76% { transform: translateY(-100px); z-index: 3; }
+        }
+
+        @media (max-width: 768px) {
+            .ticket-stack {
+                width: 280px;
+                height: 160px;
+            }
+            
+            .tickets-container {
+                margin: 1.5rem 0;
+            }
+            
+            .boarding-pass {
+                max-width: 300px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .ticket-stack {
+                width: 240px;
+                height: 140px;
+            }
+            
+            .gift-content {
+                padding: 1rem;
+            }
+        }        
         
         .badge {
             display: inline-block;
@@ -1690,10 +1770,20 @@
             <div class="boarding-pass-container">
                 <img src="src/boarding-pass.png" alt="Boarding Pass" class="boarding-pass">
             </div>
+            
+            <!-- Nuova sezione ticket -->
+            <div class="tickets-container">
+                <div class="ticket-stack">
+                    <img src="src/ticket-hamilton.png" alt="Ticket 1" class="ticket ticket-1">
+                    <img src="src/ticket-hp.png" alt="Ticket 2" class="ticket ticket-2">
+
+                </div>
+            </div>
+            
             <div class="gift-message">
-                <h2>Complimenti!</h2>
+                <h2>✨ Complimenti! ✨</h2>
                 <p>La tua incredibile performance merita di essere premiata.<br>
-                Hai vinto un viaggio gratis da riscattare quando vuoi!</p>
+                Hai vinto <strong>4 viaggi gratis</strong> da riscattare quando vuoi!</p>
                 <button onclick="closeGift()" class="close-gift-btn">Chiudi</button>
             </div>
         </div>
