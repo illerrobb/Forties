@@ -233,6 +233,37 @@
             width: 100%;
             padding: 10px;
         }
+
+        /* Altezza specifica per il grafico gnome */
+        #gnomeChart {
+            height: 350px !important;
+        }
+
+        /* Altezza maggiore per il container del grafico gnome */
+        .chart-container:has(#gnomeChart) {
+            height: 370px;
+        }
+
+        /* Miglioramenti per schermi piccoli */
+        @media (max-width: 768px) {
+            .chart-container:has(#gnomeChart) {
+                height: 320px;
+            }
+            
+            #gnomeChart {
+                height: 300px !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .chart-container:has(#gnomeChart) {
+                height: 280px;
+            }
+            
+            #gnomeChart {
+                height: 260px !important;
+            }
+        }
         
         /* Miglioramenti per schermi piccoli */
         @media (max-width: 768px) {
@@ -862,6 +893,279 @@
                 padding: 1rem;
             }
         }
+
+        /* Stili per il quiz */
+        .quiz-screen {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .quiz-intro {
+            margin: 1rem 0;
+        }
+
+        .quiz-intro p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .quiz-progress {
+            margin-bottom: 2rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #42b883, #4cd964);
+            border-radius: 10px;
+            transition: width 0.5s ease;
+            width: 0%;
+        }
+
+        .progress-text {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .quiz-question {
+            margin: 2rem 0;
+        }
+
+        .quiz-question h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+            color: white;
+        }
+
+        .answer-options {
+            display: grid;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .answer-option {
+            background: rgba(255,255,255,0.9);
+            color: #2d2b55;
+            border: none;
+            border-radius: 15px;
+            padding: 1rem 1.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        .answer-option:hover {
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .answer-option.correct {
+            background: #42b883;
+            color: white;
+            animation: correctAnswer 0.6s ease;
+        }
+
+        .answer-option.incorrect {
+            background: #ff6b8b;
+            color: white;
+            animation: incorrectAnswer 0.6s ease;
+        }
+
+        .answer-option.disabled {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        .quiz-feedback {
+            margin: 1.5rem 0;
+            padding: 1rem;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .quiz-feedback.correct {
+            background: rgba(66, 184, 131, 0.2);
+            color: #42b883;
+            border: 2px solid #42b883;
+        }
+
+        .quiz-feedback.incorrect {
+            background: rgba(255, 107, 139, 0.2);
+            color: #ff6b8b;
+            border: 2px solid #ff6b8b;
+        }
+
+        .quiz-result-content {
+            padding: 2rem;
+        }
+
+        .result-success {
+            color: #42b883;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .result-failure {
+            color: #ff6b8b;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @keyframes correctAnswer {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes incorrectAnswer {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+            100% { transform: translateX(0); }
+        }
+
+        /* Responsive per il quiz */
+        @media (max-width: 768px) {
+            .quiz-question h3 {
+                font-size: 1.1rem;
+            }
+            
+            .answer-option {
+                padding: 0.8rem 1rem;
+                font-size: 0.95rem;
+            }
+            
+            .quiz-result-content {
+                padding: 1rem;
+            }
+        }
+
+        .letter-container {
+            background: linear-gradient(135deg, #f8f4e6, #fefcf3);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 1px solid #e8dcc0;
+            position: relative;
+            text-align: left;
+            max-width: 600px;
+            margin: 1rem auto;
+        }
+
+        .letter-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b8b, #7c5cff, #42b883);
+            border-radius: 15px 15px 0 0;
+        }
+
+        .letter-header {
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #e8dcc0;
+            padding-bottom: 1rem;
+        }
+
+        .letter-date {
+            font-size: 0.9rem;
+            color: #8b7355;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .letter-to {
+            font-size: 1.1rem;
+            color: #2d2b55;
+            font-weight: 600;
+        }
+
+        .letter-body {
+            line-height: 1.7;
+            color: #2d2b55;
+            margin-bottom: 2rem;
+        }
+
+        .letter-body p {
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+        }
+
+        .letter-body p:first-child {
+            font-weight: 600;
+        }
+
+        .letter-signature {
+            text-align: right;
+            border-top: 1px solid #e8dcc0;
+            padding-top: 1rem;
+        }
+
+        .signature-text {
+            font-style: italic;
+            color: #8b7355;
+            margin-bottom: 0.5rem;
+        }
+
+        .signature-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #ff6b8b;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 0.5rem;
+        }
+
+        .signature-ps {
+            font-size: 0.85rem;
+            color: #7c5cff;
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+
+        /* Responsive per la lettera */
+        @media (max-width: 768px) {
+            .letter-container {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+            
+            .letter-body p {
+                font-size: 0.95rem;
+            }
+            
+            .signature-name {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .letter-container {
+                padding: 1rem;
+            }
+            
+            .letter-body p {
+                font-size: 0.9rem;
+                margin-bottom: 1rem;
+            }
+        }
         
         /* Animations */
         @keyframes float {
@@ -1285,21 +1589,22 @@
                     <div class="card-title">Operazione Tazze</div>
                 </div>
                 <div class="card-content">
-                    <p>Progetto speciale con tasso di fallimento record.</p>
+                    <p>Progetto speciale con tasso di successo ridotto.</p>
                     <div class="badge">Successo: 45%</div>
                     <div class="chart-container">
                         <canvas id="cupsChart"></canvas>
                     </div>
                     <ul>
-                        <li>14 tazze dipinte a mano con amore</li>
+                        <li>30 tazze dipinte a mano con amore</li>
+                        <li>24 selezionate per la performance</li>
                         <li>10 vittime durante il trasporto</li>
-                        <li>4 superstiti diventati cimeli</li>
+                        <li>14 superstiti diventati cimeli</li>
                         <li>Danno emotivo: incalcolabile</li>
                     </ul>
                     
                     <div class="anecdote">
                         <div class="anecdote-title"><i class="fas fa-heart-broken"></i> Tragedia annunciata</div>
-                        <p>Le bomboniere del matrimonio dovevano essere perfette. Ore di lavoro, tazze dipinte con cura... solo per scoprire che il servizio postale ha un approccio "creative packaging" che non condividiamo. Il suono delle tazze che si rompevano aprendo i pacchi resterà nei nostri incubi.</p>
+                        <p>Le bomboniere del matrimonio dovevano essere perfette. Ore di lavoro, tazze dipinte con cura... solo per scoprire che il servizio postale ha un approccio alla gestione dei pacchetti che non condividiamo. Il suono delle tazze rotte aprendo i pacchi resterà nei nostri incubi.</p>
                     </div>
                 </div>
             </div>
@@ -1360,7 +1665,7 @@
                 <div class="card-content" style="text-align:center;">
                     <div class="polpetta-title">La Voce di Polpetta</div>
                     <img src="src/Cane - Polpetta (2).png" alt="Polpetta 1" style="max-width:220px; width:100%; border-radius:18px; margin-bottom:1rem;">
-                    <div class="quote">"Federica? Ma chi, quella che mi prepara la pappa?"</div>
+                    <div class="quote">"Federica è una ragazza adorabile. Mi piace quando mi porta in giro, soprattutto al parco. A volte però mi tocca subire delle ispezioni, ma sempre meglio quelle che farmi tagliare le unghie!"</div>
                 </div>
             </div>
 
@@ -1377,15 +1682,15 @@
                         <canvas id="travelChart"></canvas>
                     </div>
                     <ul>
-                        <li>Viaggio di nozze: 26 giorni in Cina</li>
-                        <li>Trentino getaway: 18 giorni di relax</li>
-                        <li>Record avventura: 8 giorni in Scozia e Giordania</li>
-                        <li>Efficienza organizzativa: già pianificato fino al 2025</li>
+                        <li>MNuovo record durata viaggio: 26 giorni in Cina</li>
+                        <li>Non si prevede relax nei suoi viaggi</li>
+                        <li>Tasso di risparmio rispetto alla media di mercato: 56%</li>
+                        <li>Media chilometri giornalieri in territorio estero in aumento</li>
                     </ul>
 
                     <div class="anecdote">
                         <div class="anecdote-title"><i class="fas fa-globe-asia"></i> Strategia a lungo termine</div>
-                        <p>Mentre altri pianificano weekend, Federica pianifica mesi interi. Con una media di 4 viaggi all'anno e permanenze che vanno da 1 giorno (Milano express) a 26 giorni (viaggio di nozze in Cina), dimostra che il tempo è solo un concetto relativo quando si tratta di esplorare il mondo.</p>
+                        <p>Mentre altri pianificano weekend al mare con difficoltà, Federica pianifica intere vacanze con mesi di anticipo. Gli obiettivi a lungo termine sonoo chiari e raggiungibili: visitare tutti i paesi del mondo. Con una media di 4 viaggi all'anno e permanenze che vanno da 1 giorno (Milano express) a 26 giorni (viaggio di nozze in Cina), dimostra il costante impegno ed efficienza organizzativa.</p>
                     </div>
                 </div>
             </div>
@@ -1415,7 +1720,7 @@
                     
                     <div class="anecdote">
                         <div class="anecdote-title"><i class="fas fa-calendar-check"></i> Strategia a lungo termine</div>
-                        <p>Mentre la gente normale decide cosa fare il sabato sera il venerdì pomeriggio, Federica ha già stabilito come verranno utilizzati tutti i weekend fino al 2042. "Libero" è solo una parola nel dizionario, non nella realtà.</p>
+                        <p>Le persone hanno difficoltà a tenere la propria agenda settimanale aggiornata, Federica invece ha già stabilito come verranno utilizzati tutti i weekend fino al 2042. Ha già prenotato il treno per Torino di Maggio 2033. "Libero" è solo una parola nel dizionario.</p>
                     </div>
                 </div>
             </div>
@@ -1427,15 +1732,15 @@
                     <div class="card-title">Animal Lover</div>
                 </div>
                 <div class="card-content">
-                    <p>Dipartimento relazioni con la fauna con approccio universale.</p>
+                    <p>Dipartimento relazioni con la fauna.</p>
                     <div class="badge">Ampio raggio d'azione</div>
                     <div class="chart-container">
                         <canvas id="animalChart"></canvas>
                     </div>
                     <ul>
-                        <li>Specializzazione in animali con "mani"</li>
+                        <li>Specializzazione in animali con "manine"</li>
                         <li>Attrazione irresistibile verso artigli di 30cm</li>
-                        <li>Instagram: archivio WWF non ufficiale</li>
+                        <li>Algoritmo Instagram: archivio WWF non ufficiale</li>
                     </ul>
                     
                     <div class="skills-container">
@@ -1443,6 +1748,10 @@
                         <div class="skill"><i class="fas fa-paw"></i> Gatti</div>
                         <div class="skill"><i class="fas fa-paw"></i> Panda</div>
                         <div class="skill"><i class="fas fa-paw"></i> Orsetti</div>
+                    </div>
+                    <div class="anecdote">
+                        <div class="anecdote-title"><i class="fas fa-dog"></i> Impossibile non toccare gli animali sellvatici</div>
+                        <p>Il motto di Federica è "non esistono animali che non si possono accarezzare". Alcuni esseri viventi hanno degli effetti particolari su di lei: gli alpaca suscitano raptus strangolatori, i roditori scatenano la sua voglia di stringerli tra le dita, le scimmie le fanno venire da piangere. </p>
                     </div>
                 </div>
             </div>
@@ -1541,7 +1850,7 @@
                     <div class="card-title">Tosta e Forsuta</div>
                 </div>
                 <div class="card-content">
-                    <p>Unità operativa ad alte prestazioni con obiettivi ambiziosi.</p>
+                    <p>Dipartimento Salute e Addominali</p>
                     <div class="badge">Obiettivo 2026: Physical 100</div>
                     <div class="chart-container">
                         <canvas id="fitnessChart"></canvas>
@@ -1549,12 +1858,13 @@
                     <ul>
                         <li>Specializzazione in chiusura anelli Apple Watch</li>
                         <li>Cacciatrice di medaglie digitali</li>
+                        <li>Aspirazione Gym Mommy</li>
                         <li>Rivalità storica con macchinario hip thrust</li>
                     </ul>
                     
                     <div class="anecdote">
                         <div class="anecdote-title"><i class="fas fa-dumbbell"></i> Guerra all'Hip Thrust</div>
-                        <p>Il macchinario per gli hip thrust in palestra non sa con chi ha a che fare. Federica lo affronta con una determinazione che farebbe tremare anche Arnold Schwarzenegger. "Un giorno dominerò questo aggeggio" è il mantra che la guida verso la vittoria.</p>
+                        <p>Il macchinario per gli hip thrust in palestra ha sempre rappresentato il nemico pubblico numero 1 per Federica. Anche se il suo approccio iniziale con l'aggeggio infernale è stato fallimentare, grazie all'azione di convincimento dell suo personal trainer, finalmente il bacino ha iniziato a muoversi sotto le pesanti braccia meccaniche. "Un giorno dominerò questo aggeggio", dice Federica a denti stretti mentre i suoi glutei lottano contro la sua nemesi.</p>
                     </div>
                 </div>
             </div>
@@ -1577,12 +1887,13 @@
                         <li>Risorse affettive illimitate</li>
                     </ul>
                     <div class="quote">
-                        "A mani basse, la risorsa più preziosa dell'azienda"
+                        "A mani basse, la risorsa più preziosa di cui possiamo vantarci"
+                        <strong>- Giuseppe</strong>
                     </div>
                     
                     <div class="anecdote">
                         <div class="anecdote-title"><i class="fas fa-heart"></i> Potere trasformativo</div>
-                        <p>Anche nei giorni più grigi, Federica ha la capacità di trasformare tutto con un sorriso o una coccola. È come avere un raggio di sole personale che segue ovunque, anche quando fuori piove o hai avuto una giornata da dimenticare.</p>
+                        <p>Secondo la testimonianza di Giuseppe, P&C (Partner and Companionship) Manager, lavorare con Federica è un'esperienza incredibile e senza pari. Non esiste giorno in cui Federica non allieta le giornate dei suoi maggiori stakeholer (Giuseppe e Polpetta). Grazie all'enorme quantità di attenzione e cura che Federica ripone nei confronti dei pochi (pochissimi!) esseri viventi a cui tiene, rende la vita di chi le sta intorno gioiosa e ricca di emozioni positive.</p>
                     </div>
                 </div>
             </div>
@@ -1637,6 +1948,7 @@
                     <div class="anecdote">
                         <div class="anecdote-title"><i class="fas fa-ambulance"></i> Incidente diplomatico</div>
                         <p>Quel giorno all'ambasciata nessuno si aspettava che una semplice foto potesse trasformarsi in un evento da crisi internazionale. La testata involontaria ha creato un momento che vivrà per sempre negli annali (e nei video di sicurezza dell'ambasciata).</p>
+                    
                     </div>
                     
                     <div class="skills-container">
@@ -1742,6 +2054,38 @@
                     </div>
                 </div>
             </div>
+            <div class="review-card">
+                <div class="card-content" style="text-align:center;">
+                    <div class="polpetta-title">Una Lettera per Te</div>
+                    <img src="src/Giuseppe.png" alt="Giuseppe" style="max-width:220px; width:100%; border-radius:18px; margin-bottom:1rem;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div style="display:none; width:220px; height:220px; background:linear-gradient(135deg, #7c5cff, #ff6b8b); border-radius:18px; margin:0 auto 1rem; align-items:center; justify-content:center; color:white; font-size:4rem;">
+                        👨‍💻
+                    </div>
+                    
+                    <div class="letter-container">
+                        <div class="letter-header">
+                            <div class="letter-date">12 Giugno 2025</div>
+                            <div class="letter-to">Alla mia dolce Metà</div>
+                        </div>
+                        
+                        <div class="letter-body">
+                            <p>Cara Federica,</p>
+                            <p>Mentre scrivo questa lettera per celebrare i tuoi magnifici 40 anni, non posso fare a meno di sorridere pensando a tutti i momenti incredibili staremo vivendo insieme in questo fantastico viaggio.</p>
+                            <p>Grazie per essere la compagna perfetta per tutte le nostre avventure, da quelle più grandi a quelle più piccole, ma tutte preziose allo stesso modo.</p>
+                            <p>Spero che questa giornata passata a divertirci insieme possa restare per sempre nella nostra memoria come uno dei tanti, tantissimi momenti felici insieme.</p>
+                            <p>E chissà quante cose belle faremo insieme!</p>
+                            <p>Che questi 40 anni siano solo l'inizio di una vita ancora più bella insieme. Ti amo (anche da gnomo) sempre di più.</p>
+                            <p>AUGURI!!!</p>
+                        </div>
+                        
+                        <div class="letter-signature"
+                            <div class="signature-text">Con tutto il mio amore,</div>
+                            <div class="signature-name">Giuseppe ❤️</div>
+                            <div class="signature-ps">P.S. Polpetta approva questo messaggio! 🐾</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     
@@ -1758,14 +2102,40 @@
             
             <!-- Sezione Regalo -->
             <div class="gift-section">
-                <div class="gift-title">🎁 Sezione Speciale 🎁</div>
-                <p>Inserisci il codice segreto per sbloccare il tuo regalo di compleanno!</p>
-                <div class="code-input-container">
-                    <input type="text" id="giftCode" placeholder="Inserisci il codice..." class="gift-input">
-                    <button onclick="checkGiftCode()" class="gift-button">Sblocca Regalo</button>
+                <div class="gift-title">🎁 Quiz Speciale di Compleanno 🎁</div>
+                <p>Rispondi correttamente a tutte le domande per sbloccare il tuo regalo!</p>
+                
+                <!-- Schermata iniziale -->
+                <div id="quizStart" class="quiz-screen">
+                    <div class="quiz-intro">
+                        <p>Preparati per il quiz più importante della tua vita! 5 domande per dimostrare quanto conosci te stessa (e noi).</p>
+                        <button onclick="startQuiz()" class="gift-button">🚀 Inizia Quiz</button>
+                    </div>
                 </div>
-                <div id="errorMessage" class="error-message" style="display: none;">
-                    Codice errato! Riprova... 🤔
+                
+                <!-- Schermata quiz -->
+                <div id="quizGame" class="quiz-screen" style="display: none;">
+                    <div class="quiz-progress">
+                        <div class="progress-bar">
+                            <div id="progressFill" class="progress-fill"></div>
+                        </div>
+                        <div class="progress-text">Domanda <span id="currentQuestion">1</span> di 5</div>
+                    </div>
+                    
+                    <div class="quiz-question">
+                        <h3 id="questionText"></h3>
+                        <div id="answerOptions" class="answer-options"></div>
+                    </div>
+                    
+                    <div class="quiz-feedback" id="feedbackMessage" style="display: none;"></div>
+                </div>
+                
+                <!-- Schermata risultati -->
+                <div id="quizResults" class="quiz-screen" style="display: none;">
+                    <div class="quiz-result-content">
+                        <div id="resultMessage"></div>
+                        <button onclick="resetQuiz()" class="gift-button">🔄 Riprova</button>
+                    </div>
                 </div>
             </div>
             
@@ -1840,7 +2210,7 @@
                                     'Cambio Programma\nPre-Matrimonio', 
                                     'Cellulare del lavoro\nPerso', 
                                     'Conversazione con\nDaniele', 
-                                    'Fame\nImrpovvisa',
+                                    'Fame\nImprovvisa',
                                     'Spostamento oggetto\nNon autorizzato',
                                     'Dimenticanza\nMarito'
                                 ],
@@ -1848,12 +2218,7 @@
                                     label: 'Livello di Gnomizzazione (1-10)',
                                     data: [10, 6, 8, 5, 9, 4],
                                     backgroundColor: [
-                                        '#ff3860', // Rosso intenso per livello 9
-                                        '#ff6b8b', // Rosa-rosso per livello 7
-                                        '#ff9a9e', // Rosa chiaro per livello 6
-                                        '#ff4757', // Rosso medio per livello 8
-                                        '#ffa502', // Arancione per livello 5
-                                        '#ff6b8b'  // Rosa-rosso per livello 7
+                                        '#ff3860', '#ff6b8b', '#ff4757', '#ffa502', '#ff3860', '#ff9a9e'
                                     ],
                                     borderColor: '#fff',
                                     borderWidth: 2,
@@ -1867,18 +2232,11 @@
                                 animation: {
                                     ...animationConfig,
                                     delay: (context) => {
-                                        return context.dataIndex * 200; // Animazione ritardata per ogni barra
+                                        return context.dataIndex * 200;
                                     }
                                 },
                                 plugins: {
-                                    legend: { 
-                                        display: true,
-                                        position: 'top',
-                                        labels: {
-                                            usePointStyle: true,
-                                            padding: 15
-                                        }
-                                    },
+                                    legend: { display: false },
                                     tooltip: {
                                         backgroundColor: 'rgba(45, 43, 85, 0.9)',
                                         titleColor: '#fff',
@@ -1900,56 +2258,35 @@
                                     y: { 
                                         beginAtZero: true,
                                         max: 10,
-                                        title: {
-                                            display: true,
-                                            text: 'Intensità Gnomizzazione',
-                                            color: '#2d2b55',
-                                            font: {
-                                                weight: 'bold'
-                                            }
-                                        },
+                                        title: { display: true, text: 'Intensità Gnomizzazione', color: '#2d2b55', font: { weight: 'bold', size: 12 } },
                                         ticks: {
                                             color: '#2d2b55',
+                                            stepSize: 1,
                                             callback: function(value) {
                                                 const labels = {
-                                                    1: '😐 Minima',
-                                                    2: '😐 Minima', 
-                                                    3: '😟 Lieve',
-                                                    4: '😟 Lieve',
-                                                    5: '😠 Media',
-                                                    6: '😠 Media',
-                                                    7: '🤬 Alta',
-                                                    8: '🤬 Alta',
-                                                    9: '🧙‍♀️ CRITICA',
-                                                    10: '🧙‍♀️ MASSIMA'
+                                                    0: '😐', 1: '😐 Minima', 2: '😐', 3: '😟 Lieve', 4: '😟',
+                                                    5: '😠 Media', 6: '😠', 7: '🤬 Alta', 8: '🤬',
+                                                    9: '🧙‍♀️ CRITICA', 10: '🧙‍♀️ MASSIMA'
                                                 };
-                                                return labels[value] || value;
-                                            }
+                                                return labels[value] || '';
+                                            },
+                                            font: { size: 10 }
                                         },
-                                        grid: {
-                                            color: 'rgba(255, 107, 139, 0.1)'
-                                        }
+                                        grid: { color: 'rgba(255, 107, 139, 0.1)' }
                                     },
                                     x: {
-                                        title: {
-                                            display: true,
-                                            text: 'Eventi Scatenanti',
-                                            color: '#2d2b55',
-                                            font: {
-                                                weight: 'bold'
-                                            }
-                                        },
+                                        title: { display: true, text: 'Eventi Scatenanti', color: '#2d2b55', font: { weight: 'bold', size: 12 } },
                                         ticks: {
                                             color: '#2d2b55',
-                                            maxRotation: 45,
-                                            minRotation: 0,
-                                            font: {
-                                                size: 10
+                                            maxRotation: 0,
+                                            minRotation: 45,
+                                            font: { size: 9 },
+                                            callback: function(value, index) {
+                                                const label = this.getLabelForValue(value);
+                                                return label.split('\n');
                                             }
                                         },
-                                        grid: {
-                                            display: false
-                                        }
+                                        grid: { display: false }
                                     }
                                 }
                             }
@@ -1962,7 +2299,7 @@
                             data: {
                                 labels: ['Sopravvissute', 'Vittime'],
                                 datasets: [{
-                                    data: [4, 10],
+                                    data: [14, 10],
                                     backgroundColor: ['#42b883', '#ff6b8b'],
                                     borderWidth: 0
                                 }]
@@ -1976,10 +2313,7 @@
                                     legend: { 
                                         display: true,
                                         position: 'bottom',
-                                        labels: {
-                                            padding: 15,
-                                            usePointStyle: true
-                                        }
+                                        labels: { padding: 15, usePointStyle: true }
                                     }
                                 }
                             }
@@ -2010,29 +2344,12 @@
                                 responsive: true,
                                 maintainAspectRatio: false,
                                 animation: animationConfig,
-                                plugins: {
-                                    legend: { 
-                                        display: true,
-                                        position: 'top'
-                                    }
-                                },
+                                plugins: { legend: { display: true, position: 'top' } },
                                 scales: {
-                                    y: { 
-                                        beginAtZero: true,
-                                        title: {
-                                            display: true,
-                                            text: 'Giorni'
-                                        }
-                                    },
+                                    y: { beginAtZero: true, title: { display: true, text: 'Giorni' } },
                                     x: {
-                                        title: {
-                                            display: true,
-                                            text: 'Viaggi per anno'
-                                        },
-                                        ticks: {
-                                            maxRotation: 45,
-                                            minRotation: 45
-                                        }
+                                        title: { display: true, text: 'Viaggi per anno' },
+                                        ticks: { maxRotation: 45, minRotation: 45 }
                                     }
                                 }
                             }
@@ -2057,26 +2374,10 @@
                                 responsive: true,
                                 maintainAspectRatio: false,
                                 animation: animationConfig,
-                                plugins: {
-                                    legend: { 
-                                        display: true,
-                                        position: 'top'
-                                    }
-                                },
+                                plugins: { legend: { display: true, position: 'top' } },
                                 scales: {
-                                    y: { 
-                                        beginAtZero: true,
-                                        title: {
-                                            display: true,
-                                            text: 'Numero weekend'
-                                        }
-                                    },
-                                    x: {
-                                        title: {
-                                            display: true,
-                                            text: 'Anno'
-                                        }
-                                    }
+                                    y: { beginAtZero: true, title: { display: true, text: 'Numero weekend' } },
+                                    x: { title: { display: true, text: 'Anno' } }
                                 }
                             }
                         });
@@ -2100,10 +2401,7 @@
                                     legend: { 
                                         display: true,
                                         position: 'bottom',
-                                        labels: {
-                                            padding: 15,
-                                            usePointStyle: true
-                                        }
+                                        labels: { padding: 15, usePointStyle: true }
                                     }
                                 }
                             }
@@ -2125,26 +2423,10 @@
                                 responsive: true,
                                 maintainAspectRatio: false,
                                 animation: animationConfig,
-                                plugins: {
-                                    legend: { 
-                                        display: true,
-                                        position: 'top'
-                                    }
-                                },
+                                plugins: { legend: { display: true, position: 'top' } },
                                 scales: { 
-                                    y: { 
-                                        beginAtZero: true,
-                                        title: {
-                                            display: true,
-                                            text: 'Valori'
-                                        }
-                                    },
-                                    x: {
-                                        title: {
-                                            display: true,
-                                            text: 'Categorie'
-                                        }
-                                    }
+                                    y: { beginAtZero: true, title: { display: true, text: 'Valori' } },
+                                    x: { title: { display: true, text: 'Categorie' } }
                                 }
                             }
                         });
@@ -2166,20 +2448,12 @@
                                 responsive: true,
                                 maintainAspectRatio: false,
                                 animation: animationConfig,
-                                plugins: {
-                                    legend: { 
-                                        display: true,
-                                        position: 'top'
-                                    }
-                                },
+                                plugins: { legend: { display: true, position: 'top' } },
                                 scales: {
                                     r: { 
                                         beginAtZero: true, 
                                         max: 100,
-                                        title: {
-                                            display: true,
-                                            text: 'Percentuale'
-                                        }
+                                        title: { display: true, text: 'Percentuale' }
                                     }
                                 }
                             }
@@ -2203,28 +2477,13 @@
                                 responsive: true,
                                 maintainAspectRatio: false,
                                 animation: animationConfig,
-                                plugins: {
-                                    legend: { 
-                                        display: true,
-                                        position: 'top'
-                                    }
-                                },
+                                plugins: { legend: { display: true, position: 'top' } },
                                 scales: {
                                     y: {
-                                        min: 16,
-                                        max: 26,
-                                        reverse: true,
-                                        title: {
-                                            display: true,
-                                            text: 'Età apparente'
-                                        }
+                                        min: 16, max: 26, reverse: true,
+                                        title: { display: true, text: 'Età apparente' }
                                     },
-                                    x: {
-                                        title: {
-                                            display: true,
-                                            text: 'Anno'
-                                        }
-                                    }
+                                    x: { title: { display: true, text: 'Anno' } }
                                 }
                             }
                         });
@@ -2248,10 +2507,7 @@
                                     legend: { 
                                         display: true,
                                         position: 'bottom',
-                                        labels: {
-                                            padding: 15,
-                                            usePointStyle: true
-                                        }
+                                        labels: { padding: 15, usePointStyle: true }
                                     }
                                 }
                             }
@@ -2291,26 +2547,10 @@
                                 responsive: true,
                                 maintainAspectRatio: false,
                                 animation: animationConfig,
-                                plugins: {
-                                    legend: { 
-                                        display: true,
-                                        position: 'top'
-                                    }
-                                },
+                                plugins: { legend: { display: true, position: 'top' } },
                                 scales: {
-                                    y: { 
-                                        beginAtZero: true,
-                                        title: {
-                                            display: true,
-                                            text: 'Frequenza'
-                                        }
-                                    },
-                                    x: {
-                                        title: {
-                                            display: true,
-                                            text: 'Anno della Relazione'
-                                        }
-                                    }
+                                    y: { beginAtZero: true, title: { display: true, text: 'Frequenza' } },
+                                    x: { title: { display: true, text: 'Anno della Relazione' } }
                                 }
                             }
                         });
@@ -2319,53 +2559,185 @@
             }
         });
 
-        // Codice segreto per il regalo
-        const SECRET_CODE = "FEDERICA40"; // Cambia questo con il codice che preferisci
-        
-        function checkGiftCode() {
-            const inputCode = document.getElementById('giftCode').value.toUpperCase().trim();
-            const errorMessage = document.getElementById('errorMessage');
-            const giftOverlay = document.getElementById('giftOverlay');
-            
-            if (inputCode === SECRET_CODE) {
-                // Codice corretto - mostra il regalo
-                giftOverlay.style.display = 'flex';
-                errorMessage.style.display = 'none';
-                document.getElementById('giftCode').value = '';
-                
-                // Impedisce lo scroll del background
-                document.body.style.overflow = 'hidden';
-            } else {
-                // Codice errato - mostra errore
-                errorMessage.style.display = 'block';
-                document.getElementById('giftCode').value = '';
-                
-                // Nascondi errore dopo 3 secondi
-                setTimeout(() => {
-                    errorMessage.style.display = 'none';
-                }, 3000);
+        // Quiz di compleanno - Variabili globali
+        const quizData = [
+            {
+                question: "Cosa fa rima con eterno?",
+                options: [
+                    { text: "A. Inferno", correct: true },
+                    { text: "B. Fraterno", correct: false },
+                    { text: "C. Moderno", correct: false },
+                    { text: "D. Salerno", correct: false }
+                ]
+            },
+            {
+                question: "Qual è la migliore marca di tè freddo?",
+                options: [
+                    { text: "A. Estathé", correct: false },
+                    { text: "B. Fuze Tea", correct: true },
+                    { text: "C. Lipton", correct: false },
+                    { text: "D. Coop The al Limone", correct: false }
+                ]
+            },
+            {
+                question: "Quanti conchiglioni di pasta ti cucinerebbe Giuseppe per una cena gourmet (secondo lui)?",
+                options: [
+                    { text: "A. Uno, piccolo", correct: true },
+                    { text: "B. Un piatto intero", correct: false },
+                    { text: "C. Non sa cucinare", correct: false },
+                    { text: "D. Non molti, ma abbastanza da sfamarmi", correct: false }
+                ]
+            },
+            {
+                question: "Come valuteresti l'esperienza di oggi?",
+                options: [
+                    { text: "A. Nelle aspettative", correct: false },
+                    { text: "B. Molto buona", correct: false },
+                    { text: "C. INCREDIBILE", correct: true },
+                    { text: "D. Soddisfacente", correct: false }
+                ]
+            },
+            {
+                question: "Chi butteresti giù da una torre se fossi costretta a scegliere?",
+                options: [
+                    { text: "A. Giuseppe", correct: false },
+                    { text: "B. Polpetta", correct: false },
+                    { text: "C. Me stessa", correct: false },
+                    { text: "D. Daniele", correct: true }
+                ]
             }
+        ];
+
+        let currentQuestionIndex = 0;
+        let correctAnswers = 0;
+
+        function startQuiz() {
+            document.getElementById('quizStart').style.display = 'none';
+            document.getElementById('quizGame').style.display = 'block';
+            currentQuestionIndex = 0;
+            correctAnswers = 0;
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const question = quizData[currentQuestionIndex];
+            const progressPercent = ((currentQuestionIndex + 1) / quizData.length) * 100;
+            
+            document.getElementById('progressFill').style.width = progressPercent + '%';
+            document.getElementById('currentQuestion').textContent = currentQuestionIndex + 1;
+            document.getElementById('questionText').textContent = question.question;
+            document.getElementById('feedbackMessage').style.display = 'none';
+            
+            const optionsContainer = document.getElementById('answerOptions');
+            optionsContainer.innerHTML = '';
+            
+            question.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.className = 'answer-option';
+                button.textContent = option.text;
+                button.onclick = () => selectAnswer(index, option.correct);
+                optionsContainer.appendChild(button);
+            });
+        }
+
+        function selectAnswer(selectedIndex, isCorrect) {
+            const options = document.querySelectorAll('.answer-option');
+            const feedback = document.getElementById('feedbackMessage');
+            
+            // Disabilita tutte le opzioni
+            options.forEach(option => option.classList.add('disabled'));
+            
+            // Evidenzia la risposta selezionata
+            if (isCorrect) {
+                options[selectedIndex].classList.add('correct');
+                feedback.className = 'quiz-feedback correct';
+                feedback.textContent = '🎉 Esatto! Bene!';
+                correctAnswers++;
+            } else {
+                options[selectedIndex].classList.add('incorrect');
+                // Mostra anche la risposta corretta
+                quizData[currentQuestionIndex].options.forEach((option, index) => {
+                    if (option.correct) {
+                        options[index].classList.add('correct');
+                    }
+                });
+                feedback.className = 'quiz-feedback incorrect';
+                feedback.textContent = '❌ Sbagliata! La risposta corretta è evidenziata.';
+            }
+            
+            feedback.style.display = 'block';
+            
+            // Passa alla prossima domanda dopo 2 secondi
+            setTimeout(() => {
+                currentQuestionIndex++;
+                if (currentQuestionIndex < quizData.length) {
+                    showQuestion();
+                } else {
+                    showResults();
+                }
+            }, 2000);
+        }
+
+        function showResults() {
+            document.getElementById('quizGame').style.display = 'none';
+            document.getElementById('quizResults').style.display = 'block';
+            
+            const resultContainer = document.getElementById('resultMessage');
+            
+            if (correctAnswers === quizData.length) {
+                // Tutte le risposte corrette - mostra il premio!
+                resultContainer.innerHTML = `
+                    <div class="result-success">
+                        🏆 PERFETTO! 🏆<br>
+                        Hai risposto correttamente a tutte le ${quizData.length} domande!<br>
+                        <strong>Hai vinto il tuo regalo speciale!</strong>
+                    </div>
+                `;
+                
+                // Mostra il regalo dopo un momento
+                setTimeout(() => {
+                    showGiftOverlay();
+                }, 1500);
+                
+            } else {
+                resultContainer.innerHTML = `
+                    <div class="result-failure">
+                        😅 Hai risposto correttamente a ${correctAnswers} su ${quizData.length} domande.<br>
+                        Ti serve il puntegio pieno per sbloccare il regalo!<br>
+                        <strong>Riprova per vincere il premio!</strong>
+                    </div>
+                `;
+            }
+        }
+
+        function resetQuiz() {
+            document.getElementById('quizResults').style.display = 'none';
+            document.getElementById('quizStart').style.display = 'block';
+            currentQuestionIndex = 0;
+            correctAnswers = 0;
+        }
+
+        function showGiftOverlay() {
+            const giftOverlay = document.getElementById('giftOverlay');
+            giftOverlay.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
         }
         
         function closeGift() {
             const giftOverlay = document.getElementById('giftOverlay');
             giftOverlay.style.display = 'none';
-            
-            // Riabilita lo scroll del background
             document.body.style.overflow = 'auto';
         }
         
-        // Permetti di premere Enter per verificare il codice
-        document.getElementById('giftCode').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                checkGiftCode();
-            }
-        });
-        
         // Chiudi l'overlay cliccando fuori dal contenuto
-        document.getElementById('giftOverlay').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeGift();
+        document.addEventListener('DOMContentLoaded', function() {
+            const giftOverlay = document.getElementById('giftOverlay');
+            if (giftOverlay) {
+                giftOverlay.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        closeGift();
+                    }
+                });
             }
         });
     </script>
