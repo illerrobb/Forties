@@ -1494,6 +1494,100 @@
                 font-size: 1rem;
             }
         }
+        .stats-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 0;
+        }
+        
+        .asset-chart-container {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .asset-chart-container:hover {
+            transform: translateY(-5px);
+        }
+        
+        .asset-header {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .asset-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2d2b55;
+            margin-bottom: 0.2rem;
+        }
+        
+        .asset-ticker {
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .asset-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2d2b55;
+            margin-bottom: 0.3rem;
+        }
+        
+        .asset-change {
+            font-size: 1rem;
+            color: #4cd964;
+            font-weight: 600;
+        }
+        
+        .asset-subtitle {
+            font-size: 0.8rem;
+            color: #666;
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+        
+        #assetChart {
+            height: 150px !important;
+            width: 100% !important;
+        }
+        
+        /* Override del review-grid nell'header per occupare tutta la larghezza */
+        header .review-grid {
+            grid-template-columns: 1fr;
+            gap: 0;
+            margin: 2rem 0;
+            max-width: 100%;
+        }
+        
+        @media (max-width: 768px) {
+            .asset-chart-container {
+                padding: 1rem;
+                max-width: 100%;
+            }
+            
+            .asset-name {
+                font-size: 1.2rem;
+            }
+            
+            .asset-value {
+                font-size: 1.5rem;
+            }
+            
+            #assetChart {
+                height: 120px !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1513,22 +1607,19 @@
                 <p>Ma 40 anni per Federica sono solo un punto di partenza per una vita che non smette di regalare emozioni! Ci aspettiamo che i numeri positivi che abbiamo analizzati continueranno a crescere costantemente nel prossimo futuro.</p>
             </div>
             
-            <div class="stats-container">
-                <div class="stat-card">
-                    <div class="stat-value">100%</div>
-                    <div class="stat-label">Gnomizzazione</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">26</div>
-                    <div class="stat-label">Giorni in Cina</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">45%</div>
-                    <div class="stat-label">Tazze sopravvissute</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">∞</div>
-                    <div class="stat-label">Dolcezza</div>
+            <div class="review-grid">
+                <div class="stats-container">
+                    <div class="asset-chart-container">
+                        <div class="asset-header">
+                            <div class="asset-name">FEDERICA CORP</div>
+                            <div class="asset-ticker">FEDE</div>
+                            <div class="asset-value">€1.000.037.281 <span class="asset-change">+2,847.3%</span></div>
+                            <div class="asset-subtitle">Valore Asset in crescita costante</div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="assetChart"></canvas>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1543,131 +1634,8 @@
                     <div class="title">Abbiamo chiesto ai nostri Dipartimenti di analizzare le aree comportamentali e caratteriali di rilevanza strategica, e abbiamo dimostrato che negli ultimi 40 anni Federica si è affermata con decisione come Leader del settore.</div>
             </div>
         </div>
-            
-            <!-- Gnomizzazione -->
-            <div class="review-card">
-                <div class="card-header">
-                    <div class="card-icon">🧙‍♀️</div>
-                    <div class="card-title">Protocollo G.N.O.M.O.</div>
-                </div>
-                <div class="card-content">
-                    <p>Gestione Nevrosi Ordinaria per il Monitoraggio delle Ostilità</p>
-                    <div class="badge">Efficacia: 100%</div>
-                    <div class="chart-container">
-                        <canvas id="gnomeChart"></canvas>
-                    </div>
-                    <ul>
-                        <li>Eventi registrati nel 2024: 23</li>
-                        <li>Livello medio di gnomizzazione: 7.2/10</li>
-                        <li>Tempo di recupero medio: 47 minuti</li>
-                        <li>Postura caratteristica a piedi larghi: 100% dei casi</li>
-                        <li>Efficacia del protocollo: Comprovata</li>
-                    </ul>
-                    
-                    <div class="gnome-alert">
-                        <div class="gnome-icon">
-                            <img src="src/gnome-silhouette.svg" alt="Gnomo" class="gnome-svg-icon">
-                        </div>
-                        <div class="gnome-text">
-                            <strong>Allerta Gnomizzazione</strong>
-                            <div>Livello attuale: <span class="gnome-level">Livello 3 - Pericolo Imminente</span></div>
-                            <small>Ultimo evento: Modifica programma pre-matrimonio</small>
-                        </div>
-                    </div>
-                    
-                    <div class="anecdote">
-                        <div class="anecdote-title"><i class="fas fa-exclamation-circle"></i> Incidente critico</div>
-                        <p>"Non era previsto!" - Grido di battaglia durante l'incidente di gnomizzazione pre-matrimonio, quando un semplice cambio di programma (incontro con i genitori) ha scatenato una reazione a catena di livello 3.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Tazze Fallimento -->
-            <div class="review-card">
-                <div class="card-header">
-                    <div class="card-icon">☕</div>
-                    <div class="card-title">Operazione Tazze</div>
-                </div>
-                <div class="card-content">
-                    <p>Progetto speciale con tasso di successo ridotto.</p>
-                    <div class="badge">Successo: 45%</div>
-                    <div class="chart-container">
-                        <canvas id="cupsChart"></canvas>
-                    </div>
-                    <ul>
-                        <li>30 tazze dipinte a mano con amore</li>
-                        <li>24 selezionate per la performance</li>
-                        <li>10 vittime durante il trasporto</li>
-                        <li>14 superstiti diventati cimeli</li>
-                        <li>Danno emotivo: incalcolabile</li>
-                    </ul>
-                    
-                    <div class="anecdote">
-                        <div class="anecdote-title"><i class="fas fa-heart-broken"></i> Tragedia annunciata</div>
-                        <p>Le bomboniere del matrimonio dovevano essere perfette. Ore di lavoro, tazze dipinte con cura... solo per scoprire che il servizio postale ha un approccio alla gestione dei pacchetti che non condividiamo. Il suono delle tazze rotte aprendo i pacchi resterà nei nostri incubi.</p>
-                    </div>
-                </div>
-            </div>
 
-                        <!-- Ode alle Tazze Rotte -->
-            <div class="review-card">
-                <div class="card-header">
-                    <div class="card-icon">📜</div>
-                    <div class="card-title">Ode alle Tazze Rotte</div>
-                </div>
-                <div class="card-content">
-                    <p>Componimento poetico in memoria delle vittime dell'Operazione Tazze.</p>
-                    <div class="badge">Stile: Lirico drammatico</div>
-                    
-                    <div class="poem-container">
-                        <div class="poem-verse">
-                            <div class="verse-line">Due dozzine funron create</div>
-                            <div class="verse-line">con un sol tocco di pennello</div>
-                            <div class="verse-line">come sorelle, belle e colorate</div>
-                            <div class="verse-line">mancaron mezze, ahimè, all'appello</div>
-                        </div>
-                        
-                        <div class="poem-verse">
-                            <div class="verse-line">Tant'è l'amor che fù profuso</div>
-                            <div class="verse-line">che ogni crepa che or le adorna</div>
-                            <div class="verse-line">insigna è di un dono illuso</div>
-                            <div class="verse-line">del peregrin che parte e non ritorna</div>
-                        </div>
-                        
-                        <div class="poem-verse">
-                            <div class="verse-line">Seppur il dolor mi sia importuno</div>
-                            <div class="verse-line">cotanto belle son le risparmiate</div>
-                            <div class="verse-line">che l'altre, oramai sol coccio bruno,</div>
-                            <div class="verse-line">nel cuor mio restan immacolate</div>
-                        </div>
-                    </div>
-                    
-                    <div class="poem-signature">
-                        <div class="signature-line">~ Anonimo del XXI secolo ~</div>
-                        <div class="signature-date">Composto durante la Grande Tragedia delle Bomboniere, 2025</div>
-                    </div>
-                                      
-                    <div class="memorial-box">
-                        <div class="memorial-icon">🕯️</div>
-                        <div class="memorial-text">
-                            <div class="memorial-title">In Memoriam</div>
-                            <div class="memorial-subtitle">Alle 10 tazze che non ce l'hanno fatta</div>
-                            <div class="memorial-dates">Mag 2025 - Giu 2025</div>
-                            <div class="memorial-quote">"Fragili nel corpo, eterne nel ricordo"</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- TIP1 -->
-            <div class="review-card">
-
-                <div class="card-content" style="text-align:center;">
-                    <div class="polpetta-title">La Voce di Polpetta</div>
-                    <img src="src/Cane - Polpetta (2).png" alt="Polpetta 1" style="max-width:220px; width:100%; border-radius:18px; margin-bottom:1rem;">
-                    <div class="quote">"Federica è una ragazza adorabile. Mi piace quando mi porta in giro, soprattutto al parco. A volte però mi tocca subire delle ispezioni, ma sempre meglio quelle che farmi tagliare le unghie!"</div>
-                </div>
-            </div>
+        <h2 class="section-title">Skill & Personal Performance</h2>
 
             <!-- Pianificazione Viaggi -->
             <div class="review-card">
@@ -1682,15 +1650,15 @@
                         <canvas id="travelChart"></canvas>
                     </div>
                     <ul>
-                        <li>MNuovo record durata viaggio: 26 giorni in Cina</li>
+                        <li>Nuovo record durata viaggio: 26 giorni in Cina</li>
                         <li>Non si prevede relax nei suoi viaggi</li>
                         <li>Tasso di risparmio rispetto alla media di mercato: 56%</li>
                         <li>Media chilometri giornalieri in territorio estero in aumento</li>
                     </ul>
 
                     <div class="anecdote">
-                        <div class="anecdote-title"><i class="fas fa-globe-asia"></i> Strategia a lungo termine</div>
-                        <p>Mentre altri pianificano weekend al mare con difficoltà, Federica pianifica intere vacanze con mesi di anticipo. Gli obiettivi a lungo termine sonoo chiari e raggiungibili: visitare tutti i paesi del mondo. Con una media di 4 viaggi all'anno e permanenze che vanno da 1 giorno (Milano express) a 26 giorni (viaggio di nozze in Cina), dimostra il costante impegno ed efficienza organizzativa.</p>
+                        <div class="anecdote-title"><i class="fas fa-globe-asia"></i> Turista per sempre</div>
+                        <p>Mentre altri pianificano weekend al mare con difficoltà, Federica pianifica intere vacanze con mesi di anticipo. Gli obiettivi a lungo termine sono chiari e e ben definiti: visitare tutti i paesi del mondo. Con una media di 4 viaggi all'anno e permanenze che vanno da 1 giorno (Milano express) a 26 giorni (viaggio di nozze in Cina), i dati dimostrano il costante impegno ed efficienza organizzativa di Federica nel provvedere al fabbisogno esplorativo di coppia.</p>
                     </div>
                 </div>
             </div>
@@ -1755,90 +1723,9 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- Polpetta -->
-            <div class="review-card">
-                <div class="card-header">
-                    <div class="card-icon">🐶</div>
-                    <div class="card-title">Dipartimento Polpetta</div>
-                </div>
-                <div class="card-content">
-                    <p>Risorsa strategica con indici di dolcezza fuori scala.</p>
-                    <div class="badge">Bellezza: Over 9000</div>
-                    
-                    <div class="polpetta-card">
-                        <div class="polpetta-img">
-                            <i class="fas fa-dog"></i>
-                        </div>
-                        <div class="polpetta-stats">
-                            <h3>Polpetta</h3>
-                            <p>Direttore del Dipartimento Coccole e Sguardi Penetranti</p>
-                            <div class="skills-container">
-                                <div class="skill"><i class="fas fa-heart"></i> Dolcezza</div>
-                                <div class="skill"><i class="fas fa-star"></i> Bellezza</div>
-                                <div class="skill"><i class="fas fa-cookie"></i> Golosità</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <ul>
-                        <li>Specialista in sguardi che sciolgono i cuori</li>
-                        <li>Tecnica di begging avanzata</li>
-                        <li>Capacità di occupare tutto lo spazio letto</li>
-                        <li>Indice di adorabilità: rompe gli strumenti di misura</li>
-                    </ul>
-                    
-                    <div class="anecdote">
-                        <div class="anecdote-title"><i class="fas fa-bone"></i> Strategia alimentare</div>
-                        <p>Polpetta ha sviluppato un sistema di persuasione alimentare così efficace che riesce a ottenere snack extra anche quando tutti sanno che ha già mangiato. La sua tecnica di "sguardo da cane affamato da 3 giorni" è studiata dai migliori scienziati.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Polpetta Gallery -->
-            <div class="review-card">
-                <div class="card-header">
-                    <div class="card-icon">📸</div>
-                    <div class="card-title">Galleria Polpetta</div>
-                </div>
-                <div class="card-content">
-                    <p>Collezione esclusiva di momenti iconici del nostro asset più prezioso.</p>
-                    <div class="badge">Livello di tenerezza: Massimo</div>
-                    
-                    <div class="polpetta-gallery">
-                        <div class="gallery-item">
-                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjZjVmNWY1Ii8+Cjx0ZXh0IHg9IjEwMCIgeT0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0iY2VudHJhbCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjNjY2Ij5Qb2xwZXR0YSAxPC90ZXh0Pgo8L3N2Zz4=" alt="Polpetta momento 1" />
-                            <div class="gallery-caption">Postura da Professionista</div>
-                        </div>
-                        
-                        <div class="gallery-item">
-                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjZjVmNWY1Ii8+Cjx0ZXh0IHg9IjEwMCIgeT0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0iY2VudHJhbCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjNjY2Ij5Qb2xwZXR0YSAyPC90ZXh0Pgo8L3N2Zz4=" alt="Polpetta momento 2" />
-                            <div class="gallery-caption">Sorriso Vincente</div>
-                        </div>
-                        
-                        <div class="gallery-item">
-                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjZjVmNWY1Ii8+Cjx0ZXh0IHg9IjEwMCIgeT0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0iY2VudHJhbCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjNjY2Ij5Qb2xwZXR0YSAzPC90ZXh0Pgo8L3N2Zz4=" alt="Polpetta momento 3" />
-                            <div class="gallery-caption">Modalità Gioco Attiva</div>
-                        </div>
-                        
-                        <div class="gallery-item">
-                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjZjVmNWY1Ii8+Cjx0ZXh0IHg9IjEwMCIgeT0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0iY2VudHJhbCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjNjY2Ij5Qb2xwZXR0YSA0PC90ZXh0Pgo8L3N2Zz4=" alt="Polpetta momento 4" />
-                            <div class="gallery-caption">Strategia di Conquista</div>
-                        </div>
-                        
-                        <div class="gallery-item">
-                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjZjVmNWY1Ii8+Cjx0ZXh0IHg9IjEwMCIgeT0iMTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0iY2VudHJhbCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjNjY2Ij5Qb2xwZXR0YSA1PC90ZXh0Pgo8L3N2Zz4=" alt="Polpetta momento 5" />
-                            <div class="gallery-caption">Relax Mode</div>
-                        </div>
-                    </div>
-                    
-                    <div class="anecdote">
-                        <div class="anecdote-title"><i class="fas fa-camera"></i> Reportage fotografico</div>
-                        <p>Ogni foto cattura un momento unico della personalità polpettesca. Dal serio professionista del primo ritratto, al giocherellone della terza immagine, ogni scatto rivela una sfaccettatura diversa del nostro stakeholder peloso più importante.</p>
-                    </div>
-                </div>
-            </div>
         </div>
+
+        
         
         <h2 class="section-title">Performance Fisica & Sociale</h2>
         
@@ -1883,8 +1770,9 @@
                     </div>
                     <ul>
                         <li>Capacità di migliorare qualsiasi situazione</li>
-                        <li>Supporto emotivo a banda ultra larga</li>
+                        <li>Supporto emotivo fuori scala</li>
                         <li>Risorse affettive illimitate</li>
+                        <li>Capacità infermieristiche livello E.R.</li>
                     </ul>
                     <div class="quote">
                         "A mani basse, la risorsa più preziosa di cui possiamo vantarci"
@@ -1912,22 +1800,64 @@
                     </div>
                     <ul>
                         <li>Tecnologia brevettata di conservazione giovanile</li>
-                        <li>Scambiata regolarmente per studentessa</li>
+                        <li>Scambiata regolarmente per liceale</li>
                         <li>Algoritmo di ringiovanimento visivo</li>
+                        <li>Frase tipica: "Bambina, dove sono i tuoi genitori?"</li>
                     </ul>
                     
                     <div class="anecdote">
                         <div class="anecdote-title"><i class="fas fa-flask"></i> Segreto svelato</div>
-                        <p>Gli scienziati hanno cercato di scoprire il segreto della giovinezza perpetua di Federica. Dopo anni di ricerche, hanno concluso che è una combinazione di kimchi, risate e quell'atteggiamento vivace che fa sembrare il tempo un'illusione.</p>
+                        <p>Gli scienziati hanno cercato di scoprire il segreto della giovinezza perpetua di Federica. Dopo anni di ricerche, hanno concluso che deve trattarsi du una combinazione di kimchi, pisolini sul divano e carezze rilassanti al proprio bellissimo cane.</p>
                     </div>
                 </div>
             </div>
+            
         </div>
         
         <h2 class="section-title">Sicurezza & Sistema</h2>
         
         <div class="review-grid">
             <!-- Goffa e Pericolosa -->
+            <!-- Gnomizzazione -->
+            <div class="review-card">
+                <div class="card-header">
+                    <div class="card-icon">🧙‍♀️</div>
+                    <div class="card-title">Protocollo G.N.O.M.O.</div>
+                </div>
+                <div class="card-content">
+                    <p>Gestione Nevrosi Ordinaria per il Monitoraggio delle Ostilità</p>
+                    <div class="badge">Efficacia: 100%</div>
+                    <div class="chart-container">
+                        <canvas id="gnomeChart"></canvas>
+                    </div>
+                    <ul>
+                        <li>Eventi registrati nel 2024: 23</li>
+                        <li>Livello medio di gnomizzazione: 7.2/10</li>
+                        <li>Tempo di recupero medio: 47 minuti</li>
+                        <li>Segni di riconoscimento: piedi larghi e tremore</li>
+                        <li>Efficacia del protocollo: in testing</li>
+                    </ul>
+                    
+                    <div class="gnome-alert">
+                        <div class="gnome-icon">
+                            <img src="src/gnome-silhouette.svg" alt="Gnomo" class="gnome-svg-icon">
+                        </div>
+                        <div class="gnome-text">
+                            <strong>Allerta Gnomizzazione</strong>
+                            <div>Livello attuale: <span class="gnome-level">Livello 3 - Pericolo Imminente</span></div>
+                            <small>Ultimo evento: Modifica programma pre-matrimonio</small>
+                        </div>
+                    </div>
+                    
+                    <div class="anecdote">
+                        <div class="anecdote-title"><i class="fas fa-exclamation-circle"></i> Incidente critico</div>
+                        <p>"Non era previsto!" - Grida sentite durante l'incidente di gnomizzazione pre-matrimonio, quando un piccolo cambio di programma (incontro con i genitori dello sposo non correttamente comunicato con giusto anticipo) ha scatenato una reazione a catena di livello 3. Secondo i testimoni dell'evento, per un soffio non è stata superata la soglia critica.</p>
+                        <p>Attualmente, sono in sperimentazione delle tattiche di mitigazione degli effetti dirompenti degli Eventi GNOMO di livello 3 o superiore (per ora non ancora mai registrato). Tali metodi comprendono: merenda contenitiva, distrazione con video di gatti, e l'uso immediato "cane da compagnia" per ridurre il livello di stress.</p>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
             <div class="review-card">
                 <div class="card-header">
                     <div class="card-icon">⚠️</div>
@@ -1936,6 +1866,9 @@
                 <div class="card-content">
                     <p>Unita operativa ad alto rischio con misteri irrisolti.</p>
                     <div class="badge">Sopravvivenza: inspiegabile</div>
+                    <div class="chart-container">
+                        <canvas id="incidentsChart"></canvas>
+                    </div>
                     <ul>
                         <li>Eventi avversi: testate ad ambasciate</li>
                         <li>Creazione panico con minimo sforzo</li>
@@ -1943,11 +1876,12 @@
                     </ul>
                     <div class="quote">
                         "La scienza non ha ancora spiegato come sia ancora in vita"
+                        <strong>- Alcuni scienziati</strong>
                     </div>
                     
                     <div class="anecdote">
                         <div class="anecdote-title"><i class="fas fa-ambulance"></i> Incidente diplomatico</div>
-                        <p>Quel giorno all'ambasciata nessuno si aspettava che una semplice foto potesse trasformarsi in un evento da crisi internazionale. La testata involontaria ha creato un momento che vivrà per sempre negli annali (e nei video di sicurezza dell'ambasciata).</p>
+                        <p>La linea separatrice tra incidente di percorso e incidente diplomantico è molto sottile. Federica è stata al centro di un evento che ha lasciato il segno, sia sul suo naso, che sul muro esterno della sede di una conosciuta ambasciata estera. A causarlo un errore di calcolo fatale: quel piede non doveva trovarsi lì in quel momento.</p>
                     
                     </div>
                     
@@ -1958,31 +1892,8 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- Antisistema -->
-            <div class="review-card">
-                <div class="card-header">
-                    <div class="card-icon">🚫</div>
-                    <div class="card-title">Dipartimento Antisistema</div>
-                </div>
-                <div class="card-content">
-                    <p>Approccio non convenzionale a regole e strutture consolidate.</p>
-                    <div class="badge">Conformità: 0%</div>
-                    <div class="chart-container">
-                        <canvas id="systemChart"></canvas>
-                    </div>
-                    <ul>
-                        <li>Rifiuto categorico dell'ordine costituito</li>
-                        <li>Sistemi alternativi ad alta efficacia</li>
-                        <li>Rivoluzione continua dei processi standard</li>
-                    </ul>
-                    
-                    <div class="anecdote">
-                        <div class="anecdote-title"><i class="fas fa-rebel"></i> Ribellione organizzata</div>
-                        <p>Perché seguire le istruzioni quando puoi inventare un metodo tutto tuo che, sorprendentemente, funziona anche meglio? Federica dimostra ogni giorno che a volte le regole sono solo suggerimenti creativi.</p>
-                    </div>
-                </div>
-            </div>
+
+            <h2 class="section-title">Relazioni amorose e sentimentali</h2>
 
             <!-- Relazione Giuseppe & Federica -->
             <div class="review-card">
@@ -2034,26 +1945,29 @@
                     
                     <ul>
                         <li>Crescita baci: +2847% dal primo incontro</li>
-                        <li>Livello di compatibilità: Off the charts</li>
+                        <li>Livello di compatibilità: inspiegabile</li>
                         <li>Tempo medio senza bacini: 3.7 secondi</li>
-                        <li>Resistenza ai litigiucci: Titanio</li>
+                        <li>Resistenza ai litigi: Adamantio</li>
                     </ul>
                     
                     <div class="anecdote">
                         <div class="anecdote-title"><i class="fas fa-heartbeat"></i> Crescita esponenziale</div>
-                        <p>Dal 2021, anno zero dell'era Giuseppe-Federica, si è registrato un aumento allarmante (nel senso più dolce del termine) di bacini, coccole e momenti di tenerezza. Gli esperti confermano: "Non abbiamo mai visto nulla del genere. I livelli di dolcezza sono così alti che stanno riscrivendo i manuali di chimica amorosa."</p>
-                    </div>
-
-                    <div class="love-alert">
-                        <div class="alert-icon">⚠️</div>
-                        <div class="alert-content">
-                            <strong>ALLERTA DOLCEZZA</strong>
-                            <div>Livelli di tenerezza pericolosamente alti rilevati</div>
-                            <small>Ultimo picco: Ogni singolo momento insieme</small>
-                        </div>
+                        <p>Dal 2021, anno zero dell'era Giuseppe-Federica, si è registrato un aumento costante di effusioni amorose, coccole e momenti di tenerezza. Gli esperti confermano: "Non abbiamo mai visto nulla del genere". A seguito di un'intervista condotta su entrambi i membri della coppia, è emerso che nessuno dei due riesce a spiegarsi per quale motivo siano rimasti con i propri rispettivi ex per così tanto tempo.</p>
                     </div>
                 </div>
             </div>
+
+            <h2 class="section-title">Stakeholder review</h2>
+            <!-- TIP1 -->
+            <div class="review-card">
+                <div class="card-content" style="text-align:center;">
+                    <div class="polpetta-title">La Voce di Polpetta</div>
+                    <img src="src/Cane - Polpetta (2).png" alt="Polpetta 1" style="max-width:220px; width:100%; border-radius:18px; margin-bottom:1rem;">
+                    <div class="quote">"Federica è una ragazza adorabile. Mi piace quando mi porta in giro, soprattutto al parco. A volte però mi tocca subire delle ispezioni, ma sempre meglio quelle che farmi tagliare le unghie!"</div>
+                </div>
+            </div>
+
+            <!-- Lettera giuseppe -->
             <div class="review-card">
                 <div class="card-content" style="text-align:center;">
                     <div class="polpetta-title">Una Lettera per Te</div>
@@ -2078,7 +1992,7 @@
                             <p>AUGURI!!!</p>
                         </div>
                         
-                        <div class="letter-signature"
+                        <div class="letter-signature">
                             <div class="signature-text">Con tutto il mio amore,</div>
                             <div class="signature-name">Giuseppe ❤️</div>
                             <div class="signature-ps">P.S. Polpetta approva questo messaggio! 🐾</div>
@@ -2320,6 +2234,7 @@
                         });
                         break;
 
+                        
                     case 'travelChart':
                         new Chart(ctx, {
                             type: 'bar',
@@ -2332,6 +2247,7 @@
                                 ],
                                 datasets: [{
                                     label: 'Durata viaggi (giorni)',
+                                    borderRadius: 4,
                                     data: [4, 2, 4, 18, 2, 8, 7, 6, 8, 10, 6, 4, 7, 1, 7, 26],
                                     backgroundColor: [
                                         '#ff6b8b', '#42b883', '#42b883', '#ffd93b', '#b084ff', 
@@ -2350,6 +2266,66 @@
                                     x: {
                                         title: { display: true, text: 'Viaggi per anno' },
                                         ticks: { maxRotation: 45, minRotation: 45 }
+                                    }
+                                }
+                            }
+                        });
+                        break;
+
+                    case 'assetChart':
+                        new Chart(ctx, {
+                            type: 'line',
+                            data: {
+                                labels: ['', '', '', '', '', '', '', '', '', '', '', ''], // Labels vuote
+                                datasets: [{
+                                    data: [1, 1.2, 1.8, 2.1, 3.5, 4.2, 5.8, 7.3, 9.1, 12.4, 18.7, 28.47],
+                                    borderColor: '#4cd964',
+                                    backgroundColor: 'rgba(76, 217, 100, 0.1)',
+                                    borderWidth: 3,
+                                    fill: true,
+                                    tension: 0.4,
+                                    pointRadius: 0,
+                                    pointHoverRadius: 0,
+                                    pointHitRadius: 0
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                animation: {
+                                    duration: 2000,
+                                    easing: 'easeOutQuart'
+                                },
+                                plugins: {
+                                    legend: { 
+                                        display: false 
+                                    },
+                                    tooltip: { 
+                                        enabled: false 
+                                    }
+                                },
+                                interaction: {
+                                    intersect: false,
+                                    mode: 'index'
+                                },
+                                scales: {
+                                    x: {
+                                        display: false,
+                                        grid: { 
+                                            display: false 
+                                        }
+                                    },
+                                    y: {
+                                        display: false,
+                                        grid: { 
+                                            display: false 
+                                        },
+                                        beginAtZero: true
+                                    }
+                                },
+                                elements: {
+                                    point: {
+                                        radius: 0
                                     }
                                 }
                             }
@@ -2412,10 +2388,11 @@
                         new Chart(ctx, {
                             type: 'bar',
                             data: {
-                                labels: ['Anelli chiusi', 'Medaglie Apple Watch', 'Hip Thrust', 'Workout al mese'],
+                                labels: ['Anelli chiusi/settimana', 'Medaglie Apple Watch', 'Hip Thrust/allenamento', 'Workout al mese'],
                                 datasets: [{
                                     label: 'Performance',
-                                    data: [350, 21, 4, 28],
+                                    borderRadius: 8,
+                                    data: [21, 34, 2, 28],
                                     backgroundColor: ['#4cd964', '#ff6b8b', '#7c5cff', '#42b883']
                                 }]
                             },
@@ -2436,10 +2413,10 @@
                         new Chart(ctx, {
                             type: 'radar',
                             data: {
-                                labels: ['Supporto', 'Coccole', 'Motivazione', 'Pazienza', 'Empatia', 'Affidabilità'],
+                                labels: ['Creatività', 'Coccolosità', 'Motivazione', 'Pazienza', 'Empatia', 'Affidabilità'],
                                 datasets: [{
-                                    label: 'Livello dolcezza',
-                                    data: [99, 100, 97, 95, 100, 98],
+                                    label: 'Livello',
+                                    data: [99, 100, 97, 1, 54, 98],
                                     backgroundColor: 'rgba(255,107,139,0.19)',
                                     borderColor: '#ff6b8b'
                                 }]
@@ -2508,6 +2485,172 @@
                                         display: true,
                                         position: 'bottom',
                                         labels: { padding: 15, usePointStyle: true }
+                                    }
+                                }
+                            }
+                        });
+                        break;
+// ...existing code... (all'interno del switch statement)
+
+                    case 'incidentsChart':
+                        new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: [
+                                    'Caduta al Parco\ndi Bomarzo', 
+                                    'Inciampo parcheggio\nLago di Tovel', 
+                                    'Testata ad\nAmbasciata',
+                                    'Incidente generico\nannuale'
+                                ],
+                                datasets: [
+                                    {
+                                        label: 'Livello di Incidente (1-10)',
+                                        data: [8, 6, 9, 7],
+                                        backgroundColor: [
+                                            '#ff4757', // Rosso per Bomarzo
+                                            '#ffa502', // Arancione per Tovel
+                                            '#ff3742', // Rosso intenso per ambasciata
+                                            '#ff6b6b'  // Rosa-rosso per generico
+                                        ],
+                                        borderColor: '#fff',
+                                        borderWidth: 1,
+                                        borderRadius: 8,
+                                        yAxisID: 'y'
+                                    },
+                                    {
+                                        label: 'Rischio di Morte (%)',
+                                        data: [85, 40, 95, 60],
+                                        backgroundColor: [
+                                            'rgba(139, 69, 19, 0.8)', // Marrone scuro per Bomarzo
+                                            'rgba(255, 140, 0, 0.8)', // Arancione scuro per Tovel
+                                            'rgba(128, 0, 0, 0.8)',   // Rosso scuro per ambasciata
+                                            'rgba(169, 169, 169, 0.8)' // Grigio per generico
+                                        ],
+                                        borderColor: '#fff',
+                                        borderWidth: 1,
+                                        borderRadius: 8,
+                                        yAxisID: 'y1'
+                                    }
+                                ]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                animation: {
+                                    ...animationConfig,
+                                    delay: (context) => {
+                                        return context.dataIndex * 300;
+                                    }
+                                },
+                                plugins: {
+                                    legend: { 
+                                        display: true,
+                                        position: 'top',
+                                        labels: {
+                                            padding: 20,
+                                            usePointStyle: true,
+                                            font: {
+                                                size: 11
+                                            }
+                                        }
+                                    },
+                                    tooltip: {
+                                        backgroundColor: 'rgba(45, 43, 85, 0.95)',
+                                        titleColor: '#fff',
+                                        bodyColor: '#fff',
+                                        borderColor: '#ff4757',
+                                        borderWidth: 2,
+                                        cornerRadius: 10,
+                                        callbacks: {
+                                            afterLabel: function(context) {
+                                                if (context.datasetIndex === 0) {
+                                                    const level = context.parsed.y;
+                                                    if (level >= 8) return '💀 PERICOLO ESTREMO!';
+                                                    if (level >= 6) return '⚠️ Rischio Alto';
+                                                    if (level >= 4) return '😰 Attenzione';
+                                                    return '😅 Incidente Lieve';
+                                                } else {
+                                                    const risk = context.parsed.y;
+                                                    if (risk >= 80) return '☠️ QUASI FATALE';
+                                                    if (risk >= 60) return '🚨 Molto Pericoloso';
+                                                    if (risk >= 40) return '⚠️ Rischioso';
+                                                    return '😌 Sopravvivibile';
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                interaction: {
+                                    mode: 'index',
+                                    intersect: false,
+                                },
+                                scales: {
+                                    x: {
+                                        title: { 
+                                            display: true, 
+                                            text: 'Tipologia di Incidente', 
+                                            color: '#2d2b55', 
+                                            font: { weight: 'bold', size: 12 } 
+                                        },
+                                        ticks: {
+                                            color: '#2d2b55',
+                                            stepSize: 1,
+                                            autoSkip: false,
+                                            maxRotation: 20,
+                                            minRotation: 0,
+                                            font: { size: 9 },
+                                            callback: function(value, index) {
+                                                const label = this.getLabelForValue(value);
+                                                return label.split('\n');
+                                            }
+                                        },
+                                        grid: { display: false }
+                                    },
+                                    y: {
+                                        type: 'linear',
+                                        display: true,
+                                        position: 'left',
+                                        beginAtZero: true,
+                                        max: 10,
+                                        title: { 
+                                            display: true, 
+                                            text: 'Gravità Incidente (1-10)', 
+                                            color: '#ff4757', 
+                                            font: { weight: 'bold', size: 11 } 
+                                        },
+                                        ticks: {
+                                            color: '#ff4757',
+                                            stepSize: 2,
+                                            font: { size: 10 }
+                                        },
+                                        grid: { 
+                                            color: 'rgba(255, 71, 87, 0.1)',
+                                            drawOnChartArea: true,
+                                        }
+                                    },
+                                    y1: {
+                                        type: 'linear',
+                                        display: true,
+                                        position: 'right',
+                                        beginAtZero: true,
+                                        max: 100,
+                                        title: { 
+                                            display: true, 
+                                            text: 'Rischio Morte (%)', 
+                                            color: '#8b0000', 
+                                            font: { weight: 'bold', size: 11 } 
+                                        },
+                                        ticks: {
+                                            color: '#8b0000',
+                                            stepSize: 20,
+                                            font: { size: 10 },
+                                            callback: function(value) {
+                                                return value + '%';
+                                            }
+                                        },
+                                        grid: { 
+                                            drawOnChartArea: false,
+                                        }
                                     }
                                 }
                             }
